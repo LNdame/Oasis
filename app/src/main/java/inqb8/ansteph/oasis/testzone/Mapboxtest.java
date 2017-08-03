@@ -21,17 +21,15 @@ public class Mapboxtest extends AppCompatActivity {
         setContentView(R.layout.activity_mapboxtest);
 
         Mapbox.getInstance(this, "pk.eyJ1IjoiY3Jhc2hvdnNraSIsImEiOiJjajVtaHNudmswcW9tMndyd21wYTk0bTBhIn0.h4u8fQtN7bvQuvmHvDNhKA");
-        setContentView(R.layout.activity_mapboxtest);
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
-        mapView.setStyleUrl(Style.MAPBOX_STREETS);
-        /*mapView.getMapAsync(new OnMapReadyCallback() {
+        mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-                mapboxMap.setStyle(Style.MAPBOX_STREETS);
+                mapboxMap.setStyle("mapbox://styles/crashovski/cj5mkbzrg3hub2rqbrqsyiaug");
             }
-        });*/
+        });
 
     }
 
