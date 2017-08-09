@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:name=".app.GlobalRetainer"
         android:allowBackup="true"
@@ -26,7 +25,16 @@
             android:name="io.fabric.ApiKey"
             android:value="bd5e725a5ba4820e8068afcc3893bb8bf07a1ad0" />
 
-        <activity android:name=".testzone.Mapboxtest"></activity>
+        <activity android:name=".testzone.Mapboxtest" />
+        <activity
+            android:name=".ngo.CategoryList"
+            android:label="@string/title_activity_category_list"
+            android:parentActivityName=".Splash"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.Splash" />
+        </activity>
     </application>
 
 </manifest>

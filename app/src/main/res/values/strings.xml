@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Oasis</string>
     <string name="com.mapbox.mapboxsdk.accessToken" translatable="false">pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoejdtcmgxb3Q0MzNyeWlvdWhtYml5In0.hs9kEugjnqYXJMB41Fhxbw</string>
+    <string name="title_activity_category_list">CategoryList</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

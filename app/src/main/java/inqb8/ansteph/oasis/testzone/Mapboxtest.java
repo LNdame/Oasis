@@ -20,16 +20,20 @@ public class Mapboxtest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapboxtest);
 
-        Mapbox.getInstance(this, "pk.eyJ1IjoiY3Jhc2hvdnNraSIsImEiOiJjajVtaHNudmswcW9tMndyd21wYTk0bTBhIn0.h4u8fQtN7bvQuvmHvDNhKA");
+       // original Mapbox.getInstance(this, "pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoeG5qZ3QxbTY3MnhwbmN6ODE0bTA3In0.XZ6tlAzf1ynmBO7Lc_OK6A");
+        Mapbox.getInstance(this, "pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoeG5qZ3QxbTY3MnhwbmN6ODE0bTA3In0.XZ6tlAzf1ynmBO7Lc_OK6A");
+
+       // mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-                mapboxMap.setStyle("mapbox://styles/crashovski/cj5mkbzrg3hub2rqbrqsyiaug");
+                mapboxMap.setStyle("mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf");
             }
         });
+
 
     }
 
