@@ -7,4 +7,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_school_list">SchoolList</string>
+    <string name="title_activity_ngolist">NGOList</string>
+    <string name="title_activity_ngodetail">NGODetail</string>
+    <string name="title_activity_school_detail">SchoolDetail</string>
+    <string name="title_activity_school_map">SchoolMap</string>
+    <string name="title_activity_ngomap">NGOMap</string>
 </resources>

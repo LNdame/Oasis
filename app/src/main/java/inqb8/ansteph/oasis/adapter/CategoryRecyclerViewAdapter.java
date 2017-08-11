@@ -1,12 +1,19 @@
 package inqb8.ansteph.oasis.adapter;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
+import inqb8.ansteph.oasis.model.Category;
 
 /**
  * Created by loicstephan on 2017/08/09.
@@ -14,23 +21,35 @@ import inqb8.ansteph.oasis.R;
 
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder> {
 
+    private List<Category> categoryList;
+    Context mContext;
 
-    public CategoryRecyclerViewAdapter() {
+    RecyclerViewClickListener recyclerViewClickListener;
+
+    public CategoryRecyclerViewAdapter(List<Category> categoryList, Context context, RecyclerViewClickListener listener) {
+        this.categoryList = categoryList;
+        mContext = context;
+
+        recyclerViewClickListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false);
+
+        ViewHolder viewHolder = new ViewHolder(view);
+
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+            holder .mTextView.setText(categoryList.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return categoryList.size();
     }
 
 
@@ -53,7 +72,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         @Override
         public void onClick(View v) {
             int position =getLayoutPosition();
-            //it
+            recyclerViewClickListener.onRecyclerViewItemClicked(v, position);
         }
     }
 }

@@ -35,6 +35,64 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.Splash" />
         </activity>
+        <activity
+            android:name=".mapping.Welcome"
+            android:label="@string/title_activity_welcome"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".school.SchoolList"
+            android:label="@string/title_activity_school_list"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
+        <activity
+            android:name=".ngo.NGOList"
+            android:label="@string/title_activity_ngolist"
+            android:parentActivityName=".ngo.CategoryList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.ngo.CategoryList" />
+        </activity>
+        <activity
+            android:name=".ngo.NGODetail"
+            android:label="@string/title_activity_ngodetail"
+            android:parentActivityName=".ngo.NGOList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.ngo.NGOList" />
+        </activity>
+        <activity
+            android:name=".school.SchoolDetail"
+            android:label="@string/title_activity_school_detail"
+            android:parentActivityName=".school.SchoolList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.school.SchoolList" />
+        </activity>
+        <activity
+            android:name=".mapping.SchoolMap"
+            android:label="@string/title_activity_school_map"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
+        <activity
+            android:name=".mapping.NGOMap"
+            android:label="@string/title_activity_ngomap"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
     </application>
 
 </manifest>

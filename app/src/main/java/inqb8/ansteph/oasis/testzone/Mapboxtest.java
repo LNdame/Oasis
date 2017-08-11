@@ -30,7 +30,7 @@ public class Mapboxtest extends AppCompatActivity {
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-                mapboxMap.setStyle("mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf");
+                mapboxMap.setStyle("mapbox://styles/ansteph/cj67rrlzv0t232spntzi647iv");
             }
         });
 
