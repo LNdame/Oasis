@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
 
+import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.ngo.CategoryList;
 import inqb8.ansteph.oasis.testzone.Mapboxtest;
 import io.fabric.sdk.android.Fabric;
@@ -23,7 +24,7 @@ public class Splash extends AppCompatActivity {
 
     public void ongomapclicked(View v)
     {
-        startActivity(new Intent(getApplicationContext(), CategoryList.class));
+        startActivity(new Intent(getApplicationContext(), Welcome.class));
     }
 
 }

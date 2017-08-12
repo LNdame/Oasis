@@ -1,5 +1,6 @@
 package inqb8.ansteph.oasis.ngo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -101,6 +102,7 @@ public class CategoryList extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+//Dummy data to be removed or retrofitted once the database is live
 
     ArrayList<Category> setupList()
     {
@@ -149,6 +151,8 @@ public class CategoryList extends AppCompatActivity
 
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
-
+        Intent i = new Intent(this,NGOList.class);
+       // i.putExtra("book", mBookList.get(position) );
+        startActivity(i);
     }
 }

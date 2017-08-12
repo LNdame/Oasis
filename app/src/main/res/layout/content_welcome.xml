@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,4 +8,23 @@
     tools:context="inqb8.ansteph.oasis.mapping.Welcome"
     tools:showIn="@layout/app_bar_welcome">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btnNGO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="194dp"
+        android:text="View NGO"
+        android:layout_alignParentTop="true"
+        android:onClick="onViewNGOClicked"
+        android:layout_alignStart="@+id/btnSchool" />
+
+    <Button
+        android:id="@+id/btnSchool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNGO"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:onClick="onViewSchoolClicked"
+        android:text="View School" />
+</RelativeLayout>

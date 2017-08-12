@@ -1,5 +1,6 @@
 package inqb8.ansteph.oasis.mapping;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -99,5 +100,18 @@ public class Welcome extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+
+    public void onViewNGOClicked (View v)
+    {
+       startActivity(new Intent(getApplicationContext(), NGOMap.class));
+    }
+
+    public void onViewSchoolClicked (View v)
+    {
+        startActivity(new Intent(getApplicationContext(), SchoolMap.class));
     }
 }

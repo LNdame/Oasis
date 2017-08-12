@@ -93,6 +93,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.mapping.Welcome" />
         </activity>
+        <activity
+            android:name=".ngo.NGOProgramme"
+            android:label="@string/title_activity_ngoprogramme"
+            android:parentActivityName=".ngo.NGODetail"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.ngo.NGODetail" />
+        </activity>
     </application>
 
 </manifest>

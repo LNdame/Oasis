@@ -1,8 +1,11 @@
 package inqb8.ansteph.oasis.school;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,10 +16,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.adapter.SchoolRecyclerViewAdapter;
+import inqb8.ansteph.oasis.app.GlobalRetainer;
+import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
+import inqb8.ansteph.oasis.model.School;
 
 public class SchoolList extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener{
+
+    RecyclerView recyclerView;
+    RecyclerView.Adapter mSchoolAdapter;
+
+    List<School> mSchoolList;
+    GlobalRetainer mGlobalRetainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +58,37 @@ public class SchoolList extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+
+        mSchoolList = setupList();
+        mSchoolAdapter = new SchoolRecyclerViewAdapter(mSchoolList,this,this);
+        recyclerView.setAdapter(mSchoolAdapter);
     }
+
+
+
+
+//Dummy data to be removed or retrofitted once the database is live
+    ArrayList<School> setupList()
+    {
+        ArrayList<School>  schools = new ArrayList<>();
+
+        schools.add(new School ("Academics High chool","1 somewhere in some place"," 07252229998"));
+        schools.add(new School ("Sonia Marais High School for Girl","1 somewhere in some place"," 07252229998"));
+
+        schools.add(new School ("Lycee Joss","1 somewhere in some place"," 07252229998"));
+
+        schools.add(new School ("Prudence High Tech for Boys","1 somewhere in some place"," 07252229998"));
+
+
+        // String duration, String task_date, String start, String end, String project, String description, String realduration, String task_break) {
+        return  schools;
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -99,5 +145,12 @@ public class SchoolList extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onRecyclerViewItemClicked(View v, int position) {
+        Intent i = new Intent(this,SchoolDetail.class);
+        // i.putExtra("book", mBookList.get(position) );
+        startActivity(i);
     }
 }
