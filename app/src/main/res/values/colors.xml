@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#f78200</color>
+    <color name="colorPrimaryDark">#41529e</color>
+    <color name="colorAccent">#41529e</color>
+    <color name="defaultGray">#c0c0c0</color>
+    <color name="selectNavOrange">#f78200</color>
 </resources>

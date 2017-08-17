@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/group_school"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_welcome"
+            android:icon="@drawable/icons_home"
+            android:title="Welcome" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_school_map"
+            android:icon="@drawable/icons_waypoint_map"
+            android:title="School Map" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_school_list"
+            android:icon="@drawable/icons_grid"
+            android:title="School List" />
+    </group>
+    <group
+        android:id="@+id/group_ngo"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_ngo_map"
+            android:icon="@drawable/icons_world_map"
+            android:title="NGO Map" />
+        <item
+            android:id="@+id/nav_ngo_list"
+            android:icon="@drawable/icons_list"
+            android:title="NGO List" />
+    </group>
+    <group
+        android:id="@+id/group_last"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_toolkit"
+            android:icon="@drawable/icons_documents"
+            android:title="Toolkit" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/icons_feedback"
+            android:title="Feedback" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/icons_exit"
+            android:title="Logout" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+
+
 
 </menu>

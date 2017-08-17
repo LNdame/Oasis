@@ -128,17 +128,21 @@ public class SchoolList extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_welcome) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_school_map) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_school_list) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_ngo_map) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_ngo_list) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_toolkit) {
+
+        } else if (id == R.id.nav_feedback){
+
+        } else if (id == R.id.nav_logout){
 
         }
 
