@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -166,5 +168,10 @@ public class NGOMap extends AppCompatActivity
 
     public  void onViewListClicked (View v){
         startActivity(new Intent(getApplicationContext(), CategoryList.class));
+    }
+
+    public void DisplayMapMarker(){
+        IconFactory iconFactory = IconFactory.getInstance(NGOMap.this);
+       // Icon icon = iconFactory.fromResource(R.drawable.)
     }
 }
