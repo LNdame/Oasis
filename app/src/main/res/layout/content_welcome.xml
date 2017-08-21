@@ -1,14 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ButNS="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="inqb8.ansteph.oasis.mapping.Welcome"
     tools:showIn="@layout/app_bar_welcome">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <inqb8.ansteph.oasis.customview.BlockButton
+            android:layout_marginTop="150dp"
+            android:layout_gravity="center_horizontal|center"
+            app:pushDepthDp="6"
+            app:buttonColor="#de413e"
+            app:buttonGapColor="#7a302f"
+            android:id="@+id/btn_show_NGO"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewNGOClicked"
+            android:orientation="vertical">
+
+            <TextView
+                android:minWidth="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="View NGO" />
+
+        </inqb8.ansteph.oasis.customview.BlockButton>
+
+
+    </LinearLayout>
+    <View
+
+        android:layout_margin="25dp"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"></View>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <inqb8.ansteph.oasis.customview.BlockButton
+            android:layout_marginBottom="150dp"
+            app:pushDepthDp="6"
+            app:buttonColor="#adb6b7"
+            app:buttonGapColor="#292424"
+            android:id="@+id/btn_show_basic_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewSchoolClicked"
+            android:orientation="vertical">
+
+            <TextView
+                android:minWidth="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="View School" />
+
+        </inqb8.ansteph.oasis.customview.BlockButton>
+
+    </LinearLayout>
+
+
     <Button
+        android:visibility="gone"
         android:id="@+id/btnNGO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +110,7 @@
         android:layout_alignStart="@+id/btnSchool" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btnSchool"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,4 +119,9 @@
         android:layout_marginTop="39dp"
         android:onClick="onViewSchoolClicked"
         android:text="View School" />
-</RelativeLayout>
+
+
+
+
+
+</LinearLayout>
