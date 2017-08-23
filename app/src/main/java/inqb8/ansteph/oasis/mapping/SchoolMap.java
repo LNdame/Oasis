@@ -61,7 +61,7 @@ public class SchoolMap extends AppCompatActivity
         // mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf
         IconFactory iconFactory = IconFactory.getInstance(SchoolMap.this);
         final Icon icon = iconFactory.fromResource(R.drawable.education_marker);
-        
+
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);

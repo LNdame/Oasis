@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -54,6 +56,8 @@ public class NGOMap extends AppCompatActivity
         Mapbox.getInstance(this, "pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoeG5qZ3QxbTY3MnhwbmN6ODE0bTA3In0.XZ6tlAzf1ynmBO7Lc_OK6A");
 
         // mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf
+        IconFactory iconFactory = IconFactory.getInstance(NGOMap.this);
+        final Icon icon = iconFactory.fromResource(R.drawable.ngo_marker);
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
@@ -61,6 +65,7 @@ public class NGOMap extends AppCompatActivity
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 mapboxMap.setStyle("mapbox://styles/ansteph/cj67rrlzv0t232spntzi647iv");
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(-34.004441, 25.669534)).icon(icon));
             }
         });
 
