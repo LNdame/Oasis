@@ -13,7 +13,9 @@ apply plugin: 'io.fabric'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
-
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
 android {
     compileSdkVersion 25
@@ -50,7 +52,7 @@ dependencies {
     }
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-
+    compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.2@aar'
 
     testCompile 'junit:junit:4.12'
 }
