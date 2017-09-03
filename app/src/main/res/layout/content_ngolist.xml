@@ -12,8 +12,10 @@
         android:layout_height="match_parent"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        app:rvp_triggerOffset="0.1"
-        app:rvp_singlePageFling="true"
         android:clipToPadding="false"/>
+        <!--
+        app:rvp_triggerOffset="0.1"
+        app:rvp_singlePageFling="true" -->
+
     
 </RelativeLayout>

@@ -96,7 +96,7 @@ public class WorKAreaList extends AppCompatActivity
 
 
         ContentResolver resolver = getContentResolver();
-        Cursor cursor = resolver.query(CONTENT_URI, WorkAreaColumns.PROJECTION, null,null,null);
+        Cursor cursor = resolver.query(ContentTypes.WORKAREA_CONTENT_URI, WorkAreaColumns.PROJECTION, null,null,null);
 
         if(cursor.moveToFirst()){
             do{

@@ -77,7 +77,7 @@ public class WorkAreaContentProvider extends ContentProvider {
         String orderBy;
         if(TextUtils.isEmpty(sortOrder))
         {
-            orderBy = WorkAreaColumns._ID;
+            orderBy = WorkAreaColumns.NAME;
         }else {
             orderBy =sortOrder;
         }
