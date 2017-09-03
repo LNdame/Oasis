@@ -3,6 +3,7 @@ package inqb8.ansteph.oasis.ngo;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,27 +26,35 @@ import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.CategoryRecyclerViewAdapter;
 import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.WorkAreaColumns;
-import inqb8.ansteph.oasis.app.GlobalRetainer;
+import inqb8.ansteph.oasis.helper.DbHelper;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
 import inqb8.ansteph.oasis.model.Category;
 
-public class CategoryList extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickListener {
+public class WorKAreaList extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener {
+
+    public static final Uri CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.workareacontentprovider/oasis");
+
+    public DbHelper databhelper ;
 
     RecyclerView recyclerView;
     RecyclerView.Adapter mCatAdapter;
 
     private List<Category> mCategoryList;
 
-    GlobalRetainer mGlobalRetainer;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_list);
+        setContentView(R.layout.activity_wor_karea_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        try {
+            databhelper= new DbHelper(getApplicationContext());
+            databhelper.createDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +80,43 @@ public class CategoryList extends AppCompatActivity
         mCategoryList = setupList();
         mCatAdapter = new CategoryRecyclerViewAdapter(mCategoryList,this,this);
         recyclerView.setAdapter(mCatAdapter);
+    }
 
+
+    ArrayList<Category> setupList()
+    {
+        ArrayList<Category>  catList = new ArrayList<>();
+
+        catList.add(new Category ("Academics",""));
+        catList.add(new Category ("Something 1",""));
+
+        //catList.add(new Category ("Something 2",""));
+
+        // catList.add(new Category ("Something 3",""));
+
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(CONTENT_URI, WorkAreaColumns.PROJECTION, null,null,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Category cat = new Category();
+
+                cat.setId(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+
+                cat.setName((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.NAME))));
+                cat.setDescription((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.DESCRIPTION))));
+
+               catList.add(cat);
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+        // String duration, String task_date, String start, String end, String project, String description, String realduration, String task_break) {
+        return  catList;
     }
 
     @Override
@@ -87,7 +132,7 @@ public class CategoryList extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.category_list, menu);
+        getMenuInflater().inflate(R.menu.wor_karea_list, menu);
         return true;
     }
 
@@ -106,69 +151,23 @@ public class CategoryList extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-//Dummy data to be removed or retrofitted once the database is live
-
-    ArrayList<Category> setupList()
-    {
-        ArrayList<Category>  catList = new ArrayList<>();
-
-        catList.add(new Category ("Academics",""));
-        catList.add(new Category ("Something 1",""));
-
-        //catList.add(new Category ("Something 2",""));
-
-       // catList.add(new Category ("Something 3",""));
-
-
-        /*ContentResolver resolver = getContentResolver();
-        Cursor cursor = resolver.query(ContentTypes.WORKAREA_CONTENT_URI, WorkAreaColumns.PROJECTION, null,null,null);
-
-        if(cursor.moveToFirst()){
-            do{
-                Category cat = new Category();
-
-                cat.setId(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
-
-                cat.setName((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.NAME))));
-                cat.setDescription((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.DESCRIPTION))));
-
-               // catList.add(cat);
-
-            }while(cursor.moveToNext());
-        }
-
-        if (cursor != null && !cursor.isClosed()) {
-            cursor.close();
-        }*/
-        // String duration, String task_date, String start, String end, String project, String description, String realduration, String task_break) {
-        return  catList;
-    }
-
-
-
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_welcome) {
+        if (id == R.id.nav_camera) {
             // Handle the camera action
-        } else if (id == R.id.nav_school_map) {
+        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_school_list) {
+        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_ngo_map) {
+        } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_ngo_list) {
+        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_toolkit) {
-
-        } else if (id == R.id.nav_feedback){
-
-        } else if (id == R.id.nav_logout){
+        } else if (id == R.id.nav_send) {
 
         }
 
@@ -180,7 +179,7 @@ public class CategoryList extends AppCompatActivity
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
         Intent i = new Intent(this,NGOList.class);
-       // i.putExtra("book", mBookList.get(position) );
+        // i.putExtra("book", mBookList.get(position) );
         startActivity(i);
     }
 }

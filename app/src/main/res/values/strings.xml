@@ -15,4 +15,5 @@
     <string name="title_activity_school_map">SchoolMap</string>
     <string name="title_activity_ngomap">NGOMap</string>
     <string name="title_activity_ngoprogramme">NGOProgramme</string>
+    <string name="title_activity_wor_karea_list">WorKAreaList</string>
 </resources>

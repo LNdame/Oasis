@@ -102,6 +102,51 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.ngo.NGODetail" />
         </activity>
+
+        <provider
+            android:name=".contentprovider.WorkAreaContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.workareacontentprovider"
+           />
+        <provider
+            android:name=".contentprovider.OrganisationContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.organisationcontentprovider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
+            android:name=".contentprovider.SchoolContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.schoolcontentprovider"
+            android:enabled="true"
+            android:exported="true" />
+        <provider
+            android:name=".contentprovider.GeneralInfoContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.generalinfocontentprovider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
+            android:name=".contentprovider.CityContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.citycontentprovider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
+            android:name=".contentprovider.ProvinceContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.provincecontentprovider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
+            android:name=".contentprovider.SuburbContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.suburbcontentprovider"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".ngo.WorKAreaList"
+            android:label="@string/title_activity_wor_karea_list"
+            android:parentActivityName=".mapping.NGOMap"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.NGOMap" />
+        </activity>
     </application>
 
 </manifest>

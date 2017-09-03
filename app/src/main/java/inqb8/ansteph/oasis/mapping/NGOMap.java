@@ -25,6 +25,8 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.ngo.CategoryList;
+import inqb8.ansteph.oasis.ngo.NGOList;
+import inqb8.ansteph.oasis.ngo.WorKAreaList;
 
 public class NGOMap extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -172,7 +174,7 @@ public class NGOMap extends AppCompatActivity
 
 
     public  void onViewListClicked (View v){
-        startActivity(new Intent(getApplicationContext(), CategoryList.class));
+        startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
     }
 
     public void DisplayMapMarker(){

@@ -6,6 +6,7 @@ package inqb8.ansteph.oasis.model;
 
 public class WorkArea {
         int _id;
+    String name;
 
     String Description;
 
@@ -13,13 +14,23 @@ public class WorkArea {
     }
 
 
-    public WorkArea(int _id, String description) {
+    public WorkArea(int _id, String name, String description) {
         this._id = _id;
+        this.name = name;
         Description = description;
     }
 
-    public WorkArea(String description) {
+    public WorkArea(String name, String description) {
+        this.name = name;
         Description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int get_id() {
