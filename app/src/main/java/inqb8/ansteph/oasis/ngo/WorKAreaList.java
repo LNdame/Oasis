@@ -28,7 +28,11 @@ import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.WorkAreaColumns;
 import inqb8.ansteph.oasis.helper.DbHelper;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
+import inqb8.ansteph.oasis.mapping.NGOMap;
+import inqb8.ansteph.oasis.mapping.SchoolMap;
+import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.Category;
+import inqb8.ansteph.oasis.school.SchoolList;
 
 public class WorKAreaList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener {
@@ -87,8 +91,8 @@ public class WorKAreaList extends AppCompatActivity
     {
         ArrayList<Category>  catList = new ArrayList<>();
 
-        catList.add(new Category ("Academics",""));
-        catList.add(new Category ("Something 1",""));
+       // catList.add(new Category ("Academics",""));
+      //  catList.add(new Category ("Something 1",""));
 
         //catList.add(new Category ("Something 2",""));
 
@@ -157,19 +161,28 @@ public class WorKAreaList extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_welcome) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        } else if (id == R.id.nav_school_map) {
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_school_list) {
+            startActivity(new Intent(getApplicationContext(), SchoolList.class));
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_ngo_map) {
+            startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_ngo_list) {
+            startActivity(new Intent(getApplicationContext(), NGOList.class));
+        } else if (id == R.id.nav_toolkit) {
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+        } else if (id == R.id.nav_feedback){
+            // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+        } else if (id == R.id.nav_logout){
+            // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

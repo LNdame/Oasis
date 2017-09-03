@@ -23,7 +23,11 @@ import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.SchoolRecyclerViewAdapter;
 import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
+import inqb8.ansteph.oasis.mapping.NGOMap;
+import inqb8.ansteph.oasis.mapping.SchoolMap;
+import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.School;
+import inqb8.ansteph.oasis.ngo.NGOList;
 
 public class SchoolList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener{
@@ -130,21 +134,26 @@ public class SchoolList extends AppCompatActivity
 
         if (id == R.id.nav_welcome) {
             // Handle the camera action
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
         } else if (id == R.id.nav_school_map) {
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
 
         } else if (id == R.id.nav_school_list) {
+          //  startActivity(new Intent(getApplicationContext(), SchoolList.class));
 
         } else if (id == R.id.nav_ngo_map) {
+            startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-
+            startActivity(new Intent(getApplicationContext(), NGOList.class));
         } else if (id == R.id.nav_toolkit) {
-
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_feedback){
-
+            // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){
-
+            // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

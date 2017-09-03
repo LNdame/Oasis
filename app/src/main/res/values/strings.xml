@@ -16,4 +16,8 @@
     <string name="title_activity_ngomap">NGOMap</string>
     <string name="title_activity_ngoprogramme">NGOProgramme</string>
     <string name="title_activity_wor_karea_list">WorKAreaList</string>
+    <string name="title_activity_previewer">Previewer</string>
+    <string name="pick_file">Pick file</string>
+    <string name="toast_pick_file_error">Unable to pick file. Check status of file manager.</string>
+
 </resources>

@@ -27,6 +27,7 @@ import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.ngo.CategoryList;
 import inqb8.ansteph.oasis.ngo.NGOList;
 import inqb8.ansteph.oasis.ngo.WorKAreaList;
+import inqb8.ansteph.oasis.school.SchoolList;
 
 public class NGOMap extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -117,20 +118,24 @@ public class NGOMap extends AppCompatActivity
 
         if (id == R.id.nav_welcome) {
             // Handle the camera action
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
         } else if (id == R.id.nav_school_map) {
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
 
         } else if (id == R.id.nav_school_list) {
+            startActivity(new Intent(getApplicationContext(), SchoolList.class));
 
         } else if (id == R.id.nav_ngo_map) {
+            startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-
+            startActivity(new Intent(getApplicationContext(), NGOList.class));
         } else if (id == R.id.nav_toolkit) {
-
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_feedback){
-
+           // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){
-
+           // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         }
 
 

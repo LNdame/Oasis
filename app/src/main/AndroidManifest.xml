@@ -105,8 +105,7 @@
 
         <provider
             android:name=".contentprovider.WorkAreaContentProvider"
-            android:authorities="inqb8.ansteph.oasis.contentprovider.workareacontentprovider"
-           />
+            android:authorities="inqb8.ansteph.oasis.contentprovider.workareacontentprovider" />
         <provider
             android:name=".contentprovider.OrganisationContentProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.organisationcontentprovider"
@@ -146,6 +145,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.mapping.NGOMap" />
+        </activity>
+        <activity
+            android:name=".toolkit.Previewer"
+            android:label="@string/title_activity_previewer"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
         </activity>
     </application>
 
