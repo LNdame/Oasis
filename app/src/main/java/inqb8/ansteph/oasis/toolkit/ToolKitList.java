@@ -1,4 +1,4 @@
-package inqb8.ansteph.oasis.school;
+package inqb8.ansteph.oasis.toolkit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,37 +15,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import inqb8.ansteph.oasis.R;
-import inqb8.ansteph.oasis.adapter.SchoolRecyclerViewAdapter;
+import inqb8.ansteph.oasis.adapter.CategoryRecyclerViewAdapter;
+import inqb8.ansteph.oasis.adapter.ToolKitRecyclerViewAdapter;
 import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
 import inqb8.ansteph.oasis.mapping.NGOMap;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
-import inqb8.ansteph.oasis.model.School;
+import inqb8.ansteph.oasis.model.Category;
+import inqb8.ansteph.oasis.model.Toolkit;
 import inqb8.ansteph.oasis.ngo.NGOList;
+import inqb8.ansteph.oasis.school.SchoolList;
 
-public class SchoolList extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener, SearchView.OnQueryTextListener {
+public class ToolKitList extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener {
+
 
     RecyclerView recyclerView;
-    RecyclerView.Adapter mSchoolAdapter;
+    RecyclerView.Adapter mToolkitAdapter;
 
-    List<School> mSchoolList;
-    List<School> mFilteredList;
+    private List<Toolkit> mToolkitList;
+
     GlobalRetainer mGlobalRetainer;
-    private static final int REQUEST_CODE = 1;
-    public SearchView searchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_school_list);
+        setContentView(R.layout.activity_tool_kit_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -67,46 +69,13 @@ public class SchoolList extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
 
-        mSchoolList = setupList();
-        mFilteredList =mSchoolList;
-        mSchoolAdapter = new SchoolRecyclerViewAdapter(mSchoolList,this,this);
-        recyclerView.setAdapter(mSchoolAdapter);
-
-        //search view
-
-        searchView = (SearchView)findViewById(R.id.search);
-        searchView.setOnQueryTextListener(this);
-
-
+        mToolkitList = setupList();
+        mToolkitAdapter = new ToolKitRecyclerViewAdapter(mToolkitList,this,this);
+        recyclerView.setAdapter(mToolkitAdapter);
     }
-
-
-
-
-
-
-//Dummy data to be removed or retrofitted once the database is live
-    ArrayList<School> setupList()
-    {
-        ArrayList<School>  schools = new ArrayList<>();
-
-        schools.add(new School ("Academics High chool","1 somewhere in some place"," 07252229998"));
-        schools.add(new School ("Sonia Marais High School for Girl","1 somewhere in some place"," 07252229998"));
-
-        schools.add(new School ("Lycee Joss","1 somewhere in some place"," 07252229998"));
-
-        schools.add(new School ("Prudence High Tech for Boys","1 somewhere in some place"," 07252229998"));
-
-
-        // String duration, String task_date, String start, String end, String project, String description, String realduration, String task_break) {
-        return  schools;
-    }
-
-
 
     @Override
     public void onBackPressed() {
@@ -118,10 +87,48 @@ public class SchoolList extends AppCompatActivity
         }
     }
 
+
+    ArrayList<Toolkit> setupList()
+    {
+        ArrayList<Toolkit>  catList = new ArrayList<>();
+
+        catList.add(new Toolkit ("Academics",""));
+        catList.add(new Toolkit ("Something 1",""));
+
+        //catList.add(new Category ("Something 2",""));
+
+        // catList.add(new Category ("Something 3",""));
+
+
+        /*ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.WORKAREA_CONTENT_URI, WorkAreaColumns.PROJECTION, null,null,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Category cat = new Category();
+
+                cat.setId(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+
+                cat.setName((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.NAME))));
+                cat.setDescription((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.DESCRIPTION))));
+
+               // catList.add(cat);
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }*/
+        // String duration, String task_date, String start, String end, String project, String description, String realduration, String task_break) {
+        return  catList;
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.school_list, menu);
+        getMenuInflater().inflate(R.menu.tool_kit_list, menu);
         return true;
     }
 
@@ -148,12 +155,12 @@ public class SchoolList extends AppCompatActivity
 
         if (id == R.id.nav_welcome) {
             // Handle the camera action
-            startActivity(new Intent(getApplicationContext(), Welcome.class));
+               startActivity(new Intent(getApplicationContext(), Welcome.class));
         } else if (id == R.id.nav_school_map) {
             startActivity(new Intent(getApplicationContext(), SchoolMap.class));
 
         } else if (id == R.id.nav_school_list) {
-          //  startActivity(new Intent(getApplicationContext(), SchoolList.class));
+            startActivity(new Intent(getApplicationContext(), SchoolList.class));
 
         } else if (id == R.id.nav_ngo_map) {
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
@@ -161,12 +168,13 @@ public class SchoolList extends AppCompatActivity
         } else if (id == R.id.nav_ngo_list) {
             startActivity(new Intent(getApplicationContext(), NGOList.class));
         } else if (id == R.id.nav_toolkit) {
-            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+          //  startActivity(new Intent(getApplicationContext(), ToolKitList.class));
         } else if (id == R.id.nav_feedback){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         }
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -176,35 +184,6 @@ public class SchoolList extends AppCompatActivity
 
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
-        Intent i = new Intent(this,SchoolDetail.class);
-         i.putExtra("school", mFilteredList.get(position).getName() );
-        startActivity(i);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String query) {
-
-        query = query.toLowerCase();
-        mFilteredList = new ArrayList<>();
-
-        for(int i=0; i<mSchoolList.size(); i++)
-        {
-            final String text = mSchoolList.get(i).getName().toLowerCase();
-            if(text.contains(query)){
-                mFilteredList.add(mSchoolList.get(i));
-            }
-        }
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(SchoolList.this));
-        mSchoolAdapter = new SchoolRecyclerViewAdapter(mFilteredList,SchoolList.this,this);
-        recyclerView.setAdapter(mSchoolAdapter);
-        mSchoolAdapter.notifyDataSetChanged(); //data set changed
-        return true;
 
     }
 }

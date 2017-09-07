@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="inqb8.ansteph.oasis">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -23,7 +24,8 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="bd5e725a5ba4820e8068afcc3893bb8bf07a1ad0" />
+            android:value="bd5e725a5ba4820e8068afcc3893bb8bf07a1ad0"
+            tools:replace="android:value" />
 
         <activity android:name=".testzone.Mapboxtest" />
         <activity
@@ -154,6 +156,43 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
+        <activity
+            android:name=".registration.EmailPassword"
+            android:label="@string/title_activity_email_password"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
+        <activity
+            android:name=".registration.ExtraInfo"
+            android:label="@string/title_activity_extra_info"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
+        <activity
+            android:name=".toolkit.ToolKitList"
+            android:label="@string/title_activity_tool_kit_list"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
+        <activity
+            android:name=".toolkit.ToolkitItemDetail"
+            android:label="@string/title_activity_toolkit_item_detail"
+            android:parentActivityName=".toolkit.ToolKitList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.toolkit.ToolKitList" />
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package inqb8.ansteph.oasis.school;
+package inqb8.ansteph.oasis.toolkit;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -6,16 +6,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 
 import inqb8.ansteph.oasis.R;
 
-public class SchoolDetail extends AppCompatActivity {
+public class ToolkitItemDetail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_school_detail);
+        setContentView(R.layout.activity_toolkit_item_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,20 +27,6 @@ public class SchoolDetail extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-      //  if()
-
-        TextView txtview = (TextView) findViewById(R.id.textView3) ;
-
-        Bundle b = getIntent().getExtras();
-
-        if(b!=null)
-        {
-            txtview.setText(b.getString("school"));
-        }
-
-
-
     }
 
 }

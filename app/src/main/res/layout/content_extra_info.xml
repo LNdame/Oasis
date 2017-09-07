@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="4"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="inqb8.ansteph.oasis.registration.ExtraInfo"
+    tools:showIn="@layout/activity_extra_info">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/white_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/icon"
+            style="@style/ThemeOverlay.FirebaseIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/desc_OASIS_lockup"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            android:text="@string/tellus_about"
+            android:theme="@style/ThemeOverlay.MyaboutText" />
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/ThemeOverlay.MyTextDetail"
+            android:text="@string/signed_out" />
+
+        <TextView
+            android:id="@+id/detail"
+            style="@style/ThemeOverlay.MyTextDetail"
+            tools:text="Firebase User ID: 123456789abc" />
+
+
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/white_back"
+        android:gravity="center_horizontal">
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Surname" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Occupation" />
+
+        <inqb8.ansteph.oasis.customview.BlockButton
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal|center"
+            app:pushDepthDp="6"
+            app:buttonColor="#de413e"
+            app:buttonGapColor="#7a302f"
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewNGOClicked"
+            android:orientation="vertical">
+
+            <TextView
+                android:minWidth="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="Submit" />
+
+        </inqb8.ansteph.oasis.customview.BlockButton>
+
+
+    </LinearLayout>
+
+</LinearLayout>

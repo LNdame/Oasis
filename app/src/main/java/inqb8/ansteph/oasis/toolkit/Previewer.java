@@ -70,13 +70,13 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
             //   Log.i("sent path",mSentPath);
         }
 
-        File newdoc = new File(mSentPath);
+      //  File newdoc = new File(mSentPath);
 
-        uri= Uri.fromFile(newdoc);
+      //  uri= Uri.fromFile(newdoc);
         pdfView = (PDFView) findViewById(R.id.pdfView) ;
 
 
-        // uri = null;
+         uri = null;
 
         afterViews();
     }
