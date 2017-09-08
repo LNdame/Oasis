@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="40"
         android:background="@android:color/white"
         android:scaleType="fitCenter"
@@ -23,7 +23,8 @@
     <LinearLayout
         android:id="@+id/layout_school_info"
         android:layout_width="match_parent"
-        android:layout_weight="20"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:background="@color/authui_colorPrimaryDark"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -53,8 +54,8 @@
     <RelativeLayout
         android:id="@+id/layout_school_location"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
+        android:layout_height="0dp"
+        android:layout_weight="20"
         android:background="@color/colorPrimaryLight">
 
         <TextView
@@ -65,7 +66,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="Call: +27851 56 555" />
+            android:text="Call: +27851 56 555"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/txtFax"
@@ -75,7 +77,8 @@
             android:layout_below="@+id/txtSchoolCall"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="Fax: +2848 4 4 4 4" />
+            android:text="Fax: +2848 4 4 4 4"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/txtSchoolAddress"
@@ -84,24 +87,32 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:text="154 Admirality Way, Summerstrand, Port Elizabeth, EC 6001" />
+            android:text="154 Admirality Way, Summerstrand, Port Elizabeth, EC 6001"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapview"
-        mapbox:mapbox_cameraTargetLat="-33.939856"
-        mapbox:mapbox_cameraTargetLng="25.516010"
-        mapbox:mapbox_cameraTilt="18"
-        mapbox:mapbox_cameraZoom="10.43"
-        mapbox:mapbox_styleUrl="mapbox://styles/ansteph/cj67sdtdk0slv2smtp8xawfgm"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="139dp"
-        android:layout_weight="60" />
+        android:layout_height="0dp"
+        android:layout_weight="60"
+        android:orientation="horizontal">
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/Schoolmapview"
+            mapbox:mapbox_cameraTargetLat="-33.939856"
+            mapbox:mapbox_cameraTargetLng="25.516010"
+            mapbox:mapbox_cameraTilt="18"
+            mapbox:mapbox_cameraZoom="10.43"
+            mapbox:mapbox_styleUrl="mapbox://styles/ansteph/cj67sdtdk0slv2smtp8xawfgm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/layout_school_social"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="10"
         android:background="@color/authui_colorPrimaryDark">
 
