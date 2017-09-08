@@ -100,6 +100,7 @@
 
         <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/Schoolmapview"
+            xmlns:mapbox="http://schemas.android.com/apk/res-auto"
             mapbox:mapbox_cameraTargetLat="-33.939856"
             mapbox:mapbox_cameraTargetLng="25.516010"
             mapbox:mapbox_cameraTilt="18"
