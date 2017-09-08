@@ -23,8 +23,7 @@
     <LinearLayout
         android:id="@+id/layout_school_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
+        android:layout_weight="20"
         android:background="@color/authui_colorPrimaryDark"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -55,7 +54,7 @@
         android:id="@+id/layout_school_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="6.03"
+        android:layout_weight="10"
         android:background="@color/colorPrimaryLight">
 
         <TextView
@@ -88,11 +87,16 @@
             android:text="154 Admirality Way, Summerstrand, Port Elizabeth, EC 6001" />
     </RelativeLayout>
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapview"
+        mapbox:mapbox_cameraTargetLat="-33.939856"
+        mapbox:mapbox_cameraTargetLng="25.516010"
+        mapbox:mapbox_cameraTilt="18"
+        mapbox:mapbox_cameraZoom="10.43"
+        mapbox:mapbox_styleUrl="mapbox://styles/ansteph/cj67sdtdk0slv2smtp8xawfgm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="74" />
+        android:layout_height="139dp"
+        android:layout_weight="60" />
 
     <RelativeLayout
         android:id="@+id/layout_school_social"
