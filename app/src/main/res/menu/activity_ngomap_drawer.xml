@@ -45,5 +45,4 @@
             android:icon="@drawable/icons_exit"
             android:title="Logout" />
     </group>
-
 </menu>

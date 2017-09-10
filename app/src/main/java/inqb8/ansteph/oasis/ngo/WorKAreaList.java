@@ -32,6 +32,7 @@ import inqb8.ansteph.oasis.mapping.NGOMap;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.Category;
+import inqb8.ansteph.oasis.model.WorkArea;
 import inqb8.ansteph.oasis.school.SchoolList;
 
 public class WorKAreaList extends AppCompatActivity
@@ -45,6 +46,8 @@ public class WorKAreaList extends AppCompatActivity
     RecyclerView.Adapter mCatAdapter;
 
     private List<Category> mCategoryList;
+
+    public static final String WORKAREA = "WORK_AREA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +195,8 @@ public class WorKAreaList extends AppCompatActivity
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
         Intent i = new Intent(this,NGOList.class);
+
+        i.putExtra(WORKAREA, mCategoryList.get(position) );
         // i.putExtra("book", mBookList.get(position) );
         startActivity(i);
     }

@@ -1,10 +1,12 @@
 package inqb8.ansteph.oasis.model;
 
+import java.io.Serializable;
+
 /**
  * Created by loicstephan on 2017/08/09.
  */
 
-public class Category {
+public class Category implements Serializable{
 
     int id;
     String name, description;

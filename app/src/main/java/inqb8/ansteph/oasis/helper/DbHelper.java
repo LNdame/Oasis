@@ -1,6 +1,7 @@
 package inqb8.ansteph.oasis.helper;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+
+import inqb8.ansteph.oasis.api.Tables;
+import inqb8.ansteph.oasis.model.Organisation;
 
 /**
  * Created by loicstephan on 2017/08/31.
@@ -149,4 +154,41 @@ public class DbHelper extends SQLiteOpenHelper implements BaseColumns {
 
         return aReturn;
     }
+
+    /*********************** Organisation (Insert,Update)************/
+
+
+    public ArrayList<Organisation> retrieveAllOrganisations ()
+    {
+        ArrayList<Organisation> list = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM  Organisation" ;//+ Tables.ORGANISATION;
+
+        try{
+            if(oasisdb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = oasisdb.rawQuery(selectQuery, null);
+
+
+            if(cursor.moveToFirst()){
+                do {
+                    Organisation org = new Organisation();
+                    org.set_id(Integer.parseInt(cursor.getString(0)));
+                    org.setName(cursor.getString(1));
+
+                    list.add(org);
+                }while(cursor.moveToNext());
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+
+
+
 }

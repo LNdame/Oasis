@@ -73,5 +73,6 @@
     <string name="title_activity_extra_info">ExtraInfo</string>
     <string name="title_activity_tool_kit_list">ToolKitList</string>
     <string name="title_activity_toolkit_item_detail">ToolkitItemDetail</string>
+    <string name="title_activity_website_view">Website</string>
 
 </resources>

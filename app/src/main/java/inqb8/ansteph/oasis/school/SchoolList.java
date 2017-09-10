@@ -1,6 +1,8 @@
 package inqb8.ansteph.oasis.school;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,12 +24,18 @@ import java.util.List;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.SchoolRecyclerViewAdapter;
+import inqb8.ansteph.oasis.api.ContentTypes;
+import inqb8.ansteph.oasis.api.columns.OrganisationColumns;
+import inqb8.ansteph.oasis.api.columns.SchoolColumns;
 import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
 import inqb8.ansteph.oasis.mapping.NGOMap;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
+import inqb8.ansteph.oasis.model.Category;
+import inqb8.ansteph.oasis.model.Organisation;
 import inqb8.ansteph.oasis.model.School;
+import inqb8.ansteph.oasis.model.WorkArea;
 import inqb8.ansteph.oasis.ngo.NGOList;
 
 public class SchoolList extends AppCompatActivity
@@ -71,7 +79,7 @@ public class SchoolList extends AppCompatActivity
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
 
-        mSchoolList = setupList();
+        mSchoolList = retrieveList();//setupList();
         mFilteredList =mSchoolList;
         mSchoolAdapter = new SchoolRecyclerViewAdapter(mSchoolList,this,this);
         recyclerView.setAdapter(mSchoolAdapter);
@@ -85,6 +93,43 @@ public class SchoolList extends AppCompatActivity
     }
 
 
+    private ArrayList<School> retrieveList()
+    {
+        ArrayList<School>  schools = new ArrayList<>();
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.SCHOOL_CONTENT_URI, SchoolColumns.PROJECTION, null,null,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                School school = new School();
+
+                school.set_id(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+
+                school.setName((cursor.getString(cursor.getColumnIndex(SchoolColumns.NAME))));
+                school.setAddress((cursor.getString(cursor.getColumnIndex(SchoolColumns.ADDRESS))));
+                school.setTelephone((cursor.getString(cursor.getColumnIndex(SchoolColumns.TELEPHONE))));
+                school.setEmail((cursor.getString(cursor.getColumnIndex(SchoolColumns.EMAIL))));
+                school.setSynopsys((cursor.getString(cursor.getColumnIndex(SchoolColumns.SYNOPSIS))));
+                school.setFax((cursor.getString(cursor.getColumnIndex(SchoolColumns.FAX))));
+
+               /* int genId = (cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID)))!=null ?
+                        Integer.parseInt(cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID))):0;*/
+
+               // organisation.setGeneralInfo(retrieveGenInfo(genId));
+
+
+                schools.add(school);
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return  schools;
+    }
 
 
 

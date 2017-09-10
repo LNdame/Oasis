@@ -194,6 +194,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.toolkit.ToolKitList" />
         </activity>
+        <activity
+            android:name=".website.WebsiteView"
+            android:label="@string/title_activity_website_view"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
     </application>
 
 </manifest>

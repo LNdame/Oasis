@@ -127,7 +127,7 @@ public class CategoryList extends AppCompatActivity
             do{
                 Category cat = new Category();
 
-                cat.setId(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+                cat.set_id(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
 
                 cat.setName((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.NAME))));
                 cat.setDescription((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.DESCRIPTION))));

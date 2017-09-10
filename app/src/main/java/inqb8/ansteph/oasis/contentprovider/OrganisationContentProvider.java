@@ -79,7 +79,7 @@ public class OrganisationContentProvider extends ContentProvider {
         String orderBy;
         if(TextUtils.isEmpty(sortOrder))
         {
-            orderBy = OrganisationColumns.NAME;
+            orderBy = OrganisationColumns._ID;
         }else {
             orderBy =sortOrder;
         }
