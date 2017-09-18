@@ -1,12 +1,13 @@
 package inqb8.ansteph.oasis.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by loicstephan on 2017/08/28.
  */
 
-public class Organisation {
+public class Organisation implements Serializable{
 
     int _id;
 

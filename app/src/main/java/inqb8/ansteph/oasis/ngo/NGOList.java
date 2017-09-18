@@ -116,7 +116,14 @@ public class NGOList extends AppCompatActivity
                 organisation.set_id(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
 
                 organisation.setName((cursor.getString(cursor.getColumnIndex(OrganisationColumns.NAME))));
-               // cat.setDescription((cursor.getString(cursor.getColumnIndex(OrganisationColumns.DESCRIPTION))));
+                organisation.setAddressline1((cursor.getString(cursor.getColumnIndex(OrganisationColumns.ADDRESS1))));
+                organisation.setContactperson1Name((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON1_NAME))));
+                organisation.setContactperson1Position((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON1_POSITION))));
+
+                organisation.setContactperson2Name((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON2_NAME))));
+                organisation.setContactperson2Position((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON2_POSITION))));
+
+                // cat.setDescription((cursor.getString(cursor.getColumnIndex(OrganisationColumns.DESCRIPTION))));
 
                 organisation.setWorkArea(new WorkArea(cat.getId(),cat.getName(),cat.getDescription()));
 

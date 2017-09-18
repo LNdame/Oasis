@@ -1,6 +1,7 @@
 package inqb8.ansteph.oasis.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.model.Organisation;
+import inqb8.ansteph.oasis.ngo.NGODetail;
 
 /**
  * Created by loicstephan on 2017/09/07.
@@ -88,7 +90,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.NGOItemVie
     }
 
     @Override
-    public void onBindViewHolder(NGOItemViewHolder holder, int position) {
+    public void onBindViewHolder(NGOItemViewHolder holder,final int position) {
         holder.title.setText(organisationList.get(position).getName());
 
         holder.txtCategory.setText("[" + organisationList.get(position).getWorkArea().getName()+"]" );
@@ -103,7 +105,11 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.NGOItemVie
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(mContext, "", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(mContext, NGODetail.class);
+                i.putExtra("Org",organisationList.get(position ));
+
+                mContext.startActivity(i);
             }
         });
        // final int itemId = mItems.get(position);

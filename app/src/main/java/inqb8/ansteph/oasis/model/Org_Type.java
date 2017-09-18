@@ -1,10 +1,12 @@
 package inqb8.ansteph.oasis.model;
 
+import java.io.Serializable;
+
 /**
  * Created by loicstephan on 2017/08/28.
  */
 
-public class Org_Type {
+public class Org_Type implements Serializable{
     int _id;
     String description;
 

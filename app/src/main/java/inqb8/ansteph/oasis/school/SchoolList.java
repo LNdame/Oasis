@@ -108,10 +108,18 @@ public class SchoolList extends AppCompatActivity
 
                 school.setName((cursor.getString(cursor.getColumnIndex(SchoolColumns.NAME))));
                 school.setAddress((cursor.getString(cursor.getColumnIndex(SchoolColumns.ADDRESS))));
+                school.setLearnerLevel((cursor.getString(cursor.getColumnIndex(SchoolColumns.LEARNER_LEVEL))));
+
+                school.setGeotag((cursor.getString(cursor.getColumnIndex(SchoolColumns.GEOTAG))));
                 school.setTelephone((cursor.getString(cursor.getColumnIndex(SchoolColumns.TELEPHONE))));
                 school.setEmail((cursor.getString(cursor.getColumnIndex(SchoolColumns.EMAIL))));
                 school.setSynopsys((cursor.getString(cursor.getColumnIndex(SchoolColumns.SYNOPSIS))));
                 school.setFax((cursor.getString(cursor.getColumnIndex(SchoolColumns.FAX))));
+
+                school.setWebsite_url((cursor.getString(cursor.getColumnIndex(SchoolColumns.WEBSITE_URL))));
+                school.setImg((cursor.getBlob(cursor.getColumnIndex(SchoolColumns.LOGO))));
+
+
 
                /* int genId = (cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID)))!=null ?
                         Integer.parseInt(cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID))):0;*/
@@ -222,7 +230,7 @@ public class SchoolList extends AppCompatActivity
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
         Intent i = new Intent(this,SchoolDetail.class);
-         i.putExtra("school", mFilteredList.get(position).getName() );
+        i.putExtra(SchoolDetail.SCHOOL_PARAM, mFilteredList.get(position) );
         startActivity(i);
     }
 

@@ -1,11 +1,14 @@
 package inqb8.ansteph.oasis.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -48,6 +51,12 @@ public class SchoolRecyclerViewAdapter extends RecyclerView.Adapter<SchoolRecycl
         holder .txtAddress.setText(schoolList.get(position).getAddress());
         holder .txtTel.setText(schoolList.get(position).getTelephone());
 
+        byte[]logo  = schoolList.get(position).getImg();
+        Bitmap bmp = BitmapFactory.decodeByteArray(logo,0,logo.length);
+
+        holder.imgLogo.setImageBitmap(bmp);
+
+
 
     }
 
@@ -62,6 +71,7 @@ public class SchoolRecyclerViewAdapter extends RecyclerView.Adapter<SchoolRecycl
         public final TextView txtAddress;
         public final TextView txtName;
         public final TextView txtTel;
+        public final ImageView imgLogo;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -69,7 +79,7 @@ public class SchoolRecyclerViewAdapter extends RecyclerView.Adapter<SchoolRecycl
             this.txtName =(TextView) itemView.findViewById(R.id.txtName);
             this.txtAddress =(TextView) itemView.findViewById(R.id.txtAddress);
             this.txtTel =(TextView) itemView.findViewById(R.id.txtTel);
-
+            this.imgLogo = (ImageView) itemView.findViewById(R.id.imgLogo);
             mView.setOnClickListener(this);
         }
 

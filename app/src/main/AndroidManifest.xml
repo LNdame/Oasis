@@ -203,6 +203,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="inqb8.ansteph.oasis.mapping.Welcome" />
         </activity>
+
+        <provider
+            android:name=".contentprovider.ProgrammeContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.programmecontentprovider"
+            android:enabled="true"
+            android:exported="false"></provider>
     </application>
 
 </manifest>

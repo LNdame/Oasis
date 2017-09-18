@@ -1,0 +1,126 @@
+<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    tools:context="inqb8.ansteph.oasis.ngo.InfoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:text="About" />
+
+
+    <TextView
+        android:id="@+id/txtabout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:text="@string/dummy_text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Contact Person 1" />
+
+    <TextView
+        android:id="@+id/txtContactP1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jane Doe - CEO" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Contact Person 2" />
+
+    <TextView
+        android:id="@+id/txtContactP2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="John Doe - Office Administrator" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Email" />
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="organisation@organization.com" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Website" />
+    <TextView
+        android:id="@+id/txtWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="www.organization.com" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Telephone Number" />
+    <TextView
+        android:id="@+id/txtTelnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="041 7875656" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Fax Number" />
+    <TextView
+        android:id="@+id/txtFax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="041 7875656" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorAccent"
+        android:text="Address" />
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="someplace somewhere" />
+</LinearLayout>
+</android.support.v4.widget.NestedScrollView>
