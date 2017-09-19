@@ -1,10 +1,12 @@
 package inqb8.ansteph.oasis.model;
 
+import java.io.Serializable;
+
 /**
  * Created by loicstephan on 2017/08/28.
  */
 
-public class GeneralInfo {
+public class GeneralInfo implements Serializable{
 
     int _id;
 

@@ -17,6 +17,8 @@ public interface Tables {
 
     String PROVINCE = "province";
 
+    String PROGRAMME = "programme";
+
     String ORGANISATION  = "organisation";
 
 

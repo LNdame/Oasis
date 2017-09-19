@@ -26,7 +26,7 @@ public class OrganisationContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        // TODO: Implement this to initialize your content provider on startup.
+
         try {
             databhelper= new DbHelper(getContext());
             databhelper.createDatabase();
@@ -79,7 +79,7 @@ public class OrganisationContentProvider extends ContentProvider {
         String orderBy;
         if(TextUtils.isEmpty(sortOrder))
         {
-            orderBy = OrganisationColumns.NAME;
+            orderBy = OrganisationColumns._ID;
         }else {
             orderBy =sortOrder;
         }

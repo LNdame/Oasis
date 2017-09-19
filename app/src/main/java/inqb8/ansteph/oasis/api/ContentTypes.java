@@ -22,5 +22,7 @@ public class ContentTypes {
 
     public static final Uri SUBURB_CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.suburbcontentprovider/oasis");
 
+    public static final Uri PROGRAMME_CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.programmecontentprovider/oasis");
+
 
 }

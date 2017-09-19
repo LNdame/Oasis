@@ -1,10 +1,12 @@
 package inqb8.ansteph.oasis.model;
 
+import java.io.Serializable;
+
 /**
  * Created by loicstephan on 2017/08/31.
  */
 
-public class WorkArea {
+public class WorkArea implements Serializable{
         int _id;
     String name;
 

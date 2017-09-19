@@ -11,4 +11,5 @@
     <color name="back_orangel2">#ffb74d</color>
     <color name="back_orangel3">#ffcc80</color>
     <color name="white_back">#ffffff</color>
+    <color name="windowBackground">#ECEFF1</color>
 </resources>

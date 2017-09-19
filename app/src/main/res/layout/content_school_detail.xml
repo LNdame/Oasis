@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +13,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgLogoDet"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="40"
@@ -41,11 +42,13 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txtWebsiteUrl"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="right|center_vertical"
+            android:clickable="true"
+            android:onClick="gotoWebsite"
             android:paddingRight="10dp"
             android:text="www.lightps.com"
             android:textColor="@android:color/white" />
@@ -87,7 +90,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:text="154 Admirality Way, Summerstrand, Port Elizabeth, EC 6001"
+            android:text="154 Admiralty Way, Summerstrand, Port Elizabeth, 6001"
+            android:clickable="true"
+            android:onClick="gotoMap"
             android:textColor="@android:color/white" />
     </RelativeLayout>
 

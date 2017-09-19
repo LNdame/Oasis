@@ -1,15 +1,18 @@
 package inqb8.ansteph.oasis.model;
 
+import java.io.Serializable;
+
 /**
  * Created by loicstephan on 2017/08/12.
  */
 
-public class School {
+public class School implements Serializable {
 
 
-    int id;
+    int _id;
 
     String name, learnerLevel, educationParent, frequency , address , geotag, telephone;
+    String  fax, email, website_url, synopsys;
 
     byte [] img;
 
@@ -19,7 +22,7 @@ public class School {
     }
 
     public School(int id, String name, String learnerLevel, String educationParent, String frequency) {
-        this.id = id;
+        this._id = id;
         this.name = name;
         this.learnerLevel = learnerLevel;
         this.educationParent = educationParent;
@@ -44,12 +47,44 @@ public class School {
         this.telephone = telephone;
     }
 
-    public int getId() {
-        return id;
+    public String getFax() {
+        return fax;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWebsite_url() {
+        return website_url;
+    }
+
+    public void setWebsite_url(String website_url) {
+        this.website_url = website_url;
+    }
+
+    public String getSynopsys() {
+        return synopsys;
+    }
+
+    public void setSynopsys(String synopsys) {
+        this.synopsys = synopsys;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public String getName() {

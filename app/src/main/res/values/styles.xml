@@ -48,11 +48,15 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">36sp</item>
     </style>
+
     <style name="ThemeOverlay.MyaboutText" parent="AppTheme">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-
+    <style name="JobTabLayoutStyle" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabBackground">@color/windowBackground</item>
+    </style>
 
 </resources>

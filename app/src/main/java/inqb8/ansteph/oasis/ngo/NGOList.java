@@ -1,6 +1,8 @@
 package inqb8.ansteph.oasis.ngo;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,11 +21,21 @@ import android.view.MenuItem;
 
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
+import java.util.ArrayList;
+
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.LayoutAdapter;
+import inqb8.ansteph.oasis.api.ContentTypes;
+import inqb8.ansteph.oasis.api.columns.GeneralInfoColumns;
+import inqb8.ansteph.oasis.api.columns.OrganisationColumns;
+import inqb8.ansteph.oasis.helper.DbHelper;
 import inqb8.ansteph.oasis.mapping.NGOMap;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
+import inqb8.ansteph.oasis.model.Category;
+import inqb8.ansteph.oasis.model.GeneralInfo;
+import inqb8.ansteph.oasis.model.Organisation;
+import inqb8.ansteph.oasis.model.WorkArea;
 import inqb8.ansteph.oasis.school.SchoolList;
 
 public class NGOList extends AppCompatActivity
@@ -31,12 +43,19 @@ public class NGOList extends AppCompatActivity
 
     protected RecyclerViewPager mRecyclerView;
 
+    Category  mCurrentCategory ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ngolist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,20 +74,122 @@ public class NGOList extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        initViewPager();
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle !=null)
+        {
+            mCurrentCategory =(Category) bundle.getSerializable(WorKAreaList.WORKAREA);
+        }
+
+        if(mCurrentCategory!=null)
+        {
+            ArrayList<Organisation> orgList=retrieveList(mCurrentCategory);// databhelper.retrieveAllOrganisations();//
+
+            initViewPager(mCurrentCategory, orgList);
+
+            setTitle(mCurrentCategory.getName());
+
+        }
+
+
+
+
+
     }
 
 
 
 
 
-    protected void  initViewPager(){
+    private ArrayList<Organisation> retrieveList(Category cat)
+    {
+        ArrayList<Organisation>  organisations = new ArrayList<>();
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.ORGANISATION_CONTENT_URI, OrganisationColumns.PROJECTION, null,null,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Organisation organisation = new Organisation();
+
+                organisation.set_id(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+
+                organisation.setName((cursor.getString(cursor.getColumnIndex(OrganisationColumns.NAME))));
+                organisation.setAddressline1((cursor.getString(cursor.getColumnIndex(OrganisationColumns.ADDRESS1))));
+                organisation.setContactperson1Name((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON1_NAME))));
+                organisation.setContactperson1Position((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON1_POSITION))));
+
+                organisation.setContactperson2Name((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON2_NAME))));
+                organisation.setContactperson2Position((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON2_POSITION))));
+
+                // cat.setDescription((cursor.getString(cursor.getColumnIndex(OrganisationColumns.DESCRIPTION))));
+
+                organisation.setWorkArea(new WorkArea(cat.getId(),cat.getName(),cat.getDescription()));
+
+                int genId = (cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID)))!=null ?
+                        Integer.parseInt(cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID))):0;
+
+                organisation.setGeneralInfo(retrieveGenInfo(genId));
+
+
+                organisations.add(organisation);
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return  organisations;
+    }
+
+
+
+    private GeneralInfo retrieveGenInfo(int id){
+
+        GeneralInfo generalInfo = new GeneralInfo();
+        ContentResolver resolver  = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.GENERALINFO_CONTENT_URI, GeneralInfoColumns.PROJECTION,
+                GeneralInfoColumns._ID + "=?", new String[]{String.valueOf(id)}, null );
+
+
+        if(cursor.moveToFirst())
+        {
+            do{
+                try {
+
+                    generalInfo.set_id(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+                    generalInfo.setTelephoneNumber((cursor.getString(cursor.getColumnIndex(GeneralInfoColumns.TELEPHONE))));
+                    generalInfo.setFaxNumber((cursor.getString(cursor.getColumnIndex(GeneralInfoColumns.FAX))));
+                    generalInfo.setEmail((cursor.getString(cursor.getColumnIndex(GeneralInfoColumns.EMAIL))));
+                    generalInfo.setWebsiteurl((cursor.getString(cursor.getColumnIndex(GeneralInfoColumns.WEBSITE_URL))));
+                    generalInfo.setSynopsis((cursor.getString(cursor.getColumnIndex(GeneralInfoColumns.SYNOPSIS))));
+                    generalInfo.setLogo(cursor.getBlob(cursor.getColumnIndex(GeneralInfoColumns.LOGO)));
+
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            }while (cursor.moveToNext());
+        }
+
+
+        return  generalInfo;
+    }
+
+
+
+    protected void  initViewPager(Category category, ArrayList<Organisation> organisations){
+
         mRecyclerView =(RecyclerViewPager) findViewById(R.id.recyclerviewNgo);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(new LayoutAdapter(this,mRecyclerView));
+        mRecyclerView.setAdapter(new LayoutAdapter(this,mRecyclerView,organisations));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLongClickable(true);
 
