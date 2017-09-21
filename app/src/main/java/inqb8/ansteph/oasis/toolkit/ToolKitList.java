@@ -30,6 +30,7 @@ import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.Category;
 import inqb8.ansteph.oasis.model.Toolkit;
 import inqb8.ansteph.oasis.ngo.NGOList;
+import inqb8.ansteph.oasis.ngo.WorKAreaList;
 import inqb8.ansteph.oasis.school.SchoolList;
 
 public class ToolKitList extends AppCompatActivity
@@ -143,6 +144,10 @@ public class ToolKitList extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -166,7 +171,7 @@ public class ToolKitList extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-            startActivity(new Intent(getApplicationContext(), NGOList.class));
+            startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
           //  startActivity(new Intent(getApplicationContext(), ToolKitList.class));
         } else if (id == R.id.nav_feedback){
@@ -184,6 +189,8 @@ public class ToolKitList extends AppCompatActivity
 
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
-
+        Intent i = new Intent(this,ToolkitItemDetail.class);
+        // i.putExtra("book", mBookList.get(position) );
+        startActivity(i);
     }
 }

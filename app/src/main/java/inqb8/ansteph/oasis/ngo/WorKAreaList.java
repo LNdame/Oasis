@@ -154,6 +154,9 @@ public class WorKAreaList extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -177,7 +180,7 @@ public class WorKAreaList extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-            startActivity(new Intent(getApplicationContext(), NGOList.class));
+           // startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
             startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_feedback){

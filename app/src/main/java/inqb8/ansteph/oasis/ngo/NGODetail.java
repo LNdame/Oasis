@@ -1,6 +1,7 @@
 package inqb8.ansteph.oasis.ngo;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +15,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.OrganisationColumns;
 import inqb8.ansteph.oasis.api.columns.ProgrammeColumns;
+import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.Category;
 import inqb8.ansteph.oasis.model.Organisation;
 import inqb8.ansteph.oasis.model.Programme;
@@ -86,6 +90,34 @@ public class NGODetail extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.ngolist, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
     public void initViews(Organisation org)
