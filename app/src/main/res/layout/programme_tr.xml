@@ -1,63 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TableLayout
+    <LinearLayout
+        android:background="@color/back_orangel3"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <TableRow  android:layout_width="match_parent"
+
+        <TextView
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:text="Programme Name: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtProgName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:layout_marginRight="10dp"
+            android:text="Name" />
+    </LinearLayout>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:text="Duration: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtProgDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:text="Duration and Cost" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:text="Frequency: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtProgFreq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:text="Frequency" />
+
+
+    </LinearLayout>
+
+</FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:text="Education: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/txtProgEducator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:text="For Educator \nor Parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:text="Learner ?: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtProgPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:text="For Primary of High \n School Learner" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 
-    <TextView
-        android:id="@+id/txtProgName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:textSize="10sp"
-        android:padding="5dp"
-        android:layout_marginRight="10dp"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/txtProgDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="10sp"
-        android:padding="5dp"
-        android:text="Duration and Cost" />
-
-    <TextView
-        android:id="@+id/txtProgPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="10sp"
-        android:padding="5dp"
-        android:text="For Primary of High \n School Learner" />
-
-    <TextView
-        android:id="@+id/txtProgEducator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="10sp"
-        android:padding="5dp"
-        android:text="For Educator \nor Parent" />
-    <TextView
-        android:id="@+id/txtProgFreq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="10sp"
-        android:padding="5dp"
-        android:text="Frequency" />
-
-    </TableRow>
-    </TableLayout>
+<View
+    android:background="@color/back_orangel3"
+    android:layout_width="match_parent"
+    android:layout_height="2dp"/>
 
 </LinearLayout>

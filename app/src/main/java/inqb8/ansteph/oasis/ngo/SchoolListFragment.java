@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.model.Organisation_School;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,11 +23,11 @@ public class SchoolListFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM2 = "school";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private String mParam2;
+    private ArrayList<Organisation_School> mOrganisation_schools;
 
     ListView mListView;
 
@@ -37,15 +40,15 @@ public class SchoolListFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param org_school Parameter 2.
      * @return A new instance of fragment SchoolListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SchoolListFragment newInstance(String param1, String param2) {
+    public static SchoolListFragment newInstance(String param1, ArrayList<Organisation_School> org_school) {
         SchoolListFragment fragment = new SchoolListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable(ARG_PARAM2, org_school);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,7 +58,7 @@ public class SchoolListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mOrganisation_schools = (ArrayList<Organisation_School>)getArguments().getSerializable(ARG_PARAM2);
         }
     }
 
@@ -66,7 +69,12 @@ public class SchoolListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_school_list, container, false);
 
         mListView = (ListView) rootView.findViewById(R.id.listview);
-        String[] Schools = new String[]{"School 1", "School2"};
+        String[] Schools = new String[mOrganisation_schools.size()];
+
+        for(int i=0; i< mOrganisation_schools.size() ; i++)
+        {
+            Schools[i] = mOrganisation_schools.get(i).getSchool_name();
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, Schools);
         mListView.setAdapter(adapter);
@@ -74,5 +82,9 @@ public class SchoolListFragment extends Fragment {
 
         return  rootView;
     }
+
+
+
+
 
 }

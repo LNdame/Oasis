@@ -24,5 +24,6 @@ public class ContentTypes {
 
     public static final Uri PROGRAMME_CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.programmecontentprovider/oasis");
 
+    public static final Uri ORGANISATION_SCHOOL_CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.organisationschoolcontentprovider/oasis");
 
 }

@@ -21,45 +21,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="11sp"
-                android:padding="5dp"
+                android:textSize="9sp"
+                android:padding="3dp"
                 android:layout_marginRight="10dp"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="11sp"
-                android:padding="5dp"
-                android:text="Duration and Cost" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="11sp"
-                android:padding="5dp"
-                android:text="For Primary of High \n School Learner" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="11sp"
-                android:padding="5dp"
-                android:text="For Educator \nor Parent" />
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="11sp"
-                android:padding="5dp"
-                android:text="Frequency" />
+                android:text="" />
 
 
     </LinearLayout>

@@ -88,4 +88,20 @@
        quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
    </string>
 
+
+    <string name="slide_1_title">Hello from OASIS!</string>
+    <string name="slide_1_desc">ullam corporis suscipit laboriosam,,\n ut labore et dolore magnam aliquam commodi consequatur!</string>
+
+    <string name="slide_2_title">OASIS app is easy to use!</string>
+    <string name="slide_2_desc">Ted ut perspiciatis unde omnis iste natus error sit \n voluptatem accusantium doloremque!</string>
+
+    <string name="slide_3_title">Across the Mandela Bay coming soon to the rest of South Africa</string>
+    <string name="slide_3_desc">Neque porro quisquam est,\n  qui dolorem ipsum quia dolor sit amet,\n  ullam corporis suscipit laboriosam!</string>
+
+    <string name="slide_4_title">All about YOU</string>
+    <string name="slide_4_desc">quis nostrum exercitationem ullam corporis suscipit,\n laboriosam, -> nisi ut </string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
 </resources>

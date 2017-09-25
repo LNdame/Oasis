@@ -26,7 +26,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <inqb8.ansteph.oasis.customview.BlockButton
+
+            app:pushDepthDp="6"
+            app:buttonColor="#adb6b7"
+            app:buttonGapColor="#292424"
+            android:id="@+id/btn_show_basic_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewListClicked"
+            android:orientation="vertical">
+
+            <TextView
+                android:minWidth="250dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="View NGO  List" />
+
+        </inqb8.ansteph.oasis.customview.BlockButton>
+
         <Button
+            android:visibility="gone"
             android:text="View NGO  List"
             android:layout_width="match_parent"
             android:onClick="onViewListClicked"

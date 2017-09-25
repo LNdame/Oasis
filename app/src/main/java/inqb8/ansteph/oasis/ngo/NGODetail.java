@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,10 +27,12 @@ import java.util.ArrayList;
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.OrganisationColumns;
+import inqb8.ansteph.oasis.api.columns.Organisation_SchoolColumns;
 import inqb8.ansteph.oasis.api.columns.ProgrammeColumns;
 import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.Category;
 import inqb8.ansteph.oasis.model.Organisation;
+import inqb8.ansteph.oasis.model.Organisation_School;
 import inqb8.ansteph.oasis.model.Programme;
 import inqb8.ansteph.oasis.model.WorkArea;
 
@@ -46,6 +49,8 @@ public class NGODetail extends AppCompatActivity {
     ImageView imgLogo;
 
     ArrayList<Programme> programmeArrayList;
+
+    ArrayList<Organisation_School> OrganisationSchoolList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +79,11 @@ public class NGODetail extends AppCompatActivity {
         }
 
         programmeArrayList= retrieveList(receivedOrg.get_id());
-
+        OrganisationSchoolList = retrieveOrgList(receivedOrg.get_id());
 
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        adapterViewPager = new ListingAdapter(getSupportFragmentManager(),programmeArrayList,receivedOrg);
+        adapterViewPager = new ListingAdapter(getSupportFragmentManager(),programmeArrayList,receivedOrg,OrganisationSchoolList);
         viewPager.setAdapter(adapterViewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
@@ -139,12 +144,57 @@ public class NGODetail extends AppCompatActivity {
 
 
 
+    private ArrayList<Organisation_School> retrieveOrgList(int org_id)
+    {
+        ArrayList<Organisation_School>  organisation_schools = new ArrayList<>();
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.ORGANISATION_SCHOOL_CONTENT_URI, Organisation_SchoolColumns.PROJECTION,
+                Organisation_SchoolColumns.ORGANISATION_ID + "=?",new String[]{String.valueOf(org_id)},null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Organisation_School prog = new Organisation_School(
+                        ((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0) ,
+                        ((cursor.getString(1))!=null && !TextUtils.isEmpty(cursor.getString(1)) ? Integer.parseInt(cursor.getString(1)):0) ,
+                        ((cursor.getString(2))!=null && !TextUtils.isEmpty(cursor.getString(2)) ? Integer.parseInt(cursor.getString(2)):0) ,
+
+                        (cursor.getString(cursor.getColumnIndex(Organisation_SchoolColumns.SCHOOL_NAME))),
+
+                        (cursor.getString(cursor.getColumnIndex(Organisation_SchoolColumns.GEOGRAPHIC_AREA))),
+
+                        (cursor.getString(cursor.getColumnIndex(Organisation_SchoolColumns.LEARNER_TARGET))),
+
+                        (cursor.getString(cursor.getColumnIndex(Organisation_SchoolColumns.TARGET))),
+
+                        (cursor.getString(cursor.getColumnIndex(Organisation_SchoolColumns.FREQUENCY)))
+
+
+                );
+
+
+
+
+                organisation_schools.add(prog);
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return  organisation_schools;
+    }
+
+
     private ArrayList<Programme> retrieveList(int org_id)
     {
         ArrayList<Programme>  programmes = new ArrayList<>();
 
         ContentResolver resolver = getContentResolver();
-        Cursor cursor = resolver.query(ContentTypes.PROGRAMME_CONTENT_URI, ProgrammeColumns.PROJECTION, null,null,null);
+        Cursor cursor = resolver.query(ContentTypes.PROGRAMME_CONTENT_URI, ProgrammeColumns.PROJECTION,
+                ProgrammeColumns.ORGANISATION_ID + "=?",new String[]{String.valueOf(org_id)},null);
 
         if(cursor.moveToFirst()){
             do{
@@ -200,14 +250,15 @@ public class NGODetail extends AppCompatActivity {
 
         private static int NUM_ITEMS = 3;
         private String tabTitles[] = new String[]{"About", "Schools", "Programmes"};
-
+        ArrayList<Organisation_School> OrganisationSchoolList;
         ArrayList<Programme> mProgList;
         Organisation mOrganisation;
-        public ListingAdapter(FragmentManager fm , ArrayList<Programme> progList, Organisation organisation) {
+        public ListingAdapter(FragmentManager fm , ArrayList<Programme> progList, Organisation organisation,ArrayList<Organisation_School> OrganisationSchools) {
 
             super(fm);
             mProgList =progList;
             mOrganisation = organisation;
+            OrganisationSchoolList =OrganisationSchools;
         }
 
         @Override
@@ -215,7 +266,7 @@ public class NGODetail extends AppCompatActivity {
 
             switch (position){
                 case 0: return InfoFragment.newInstance("Page #1", mOrganisation);
-                case 1: return SchoolListFragment.newInstance("Page #2", "op");
+                case 1: return SchoolListFragment.newInstance("Page #2", OrganisationSchoolList);
                 case 2: return ProgramFragment.newInstance("Page #3", mProgList);
                 default: return  null;
             }

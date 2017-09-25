@@ -25,6 +25,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.School;
@@ -36,6 +37,7 @@ public class SchoolDetail extends AppCompatActivity {
     TextView txtaddress, txtName, txtLearnerLevel,txtGeotag, txtTelephone, txtFax, txtEmail, txtWebsite;
     ImageView imgLogo;
     public static String SCHOOL_PARAM = "school";
+
 
     public School receivedSchool;
 
@@ -149,7 +151,10 @@ public class SchoolDetail extends AppCompatActivity {
 
     public void gotoWebsite(View view)
     {
-        startActivity(new Intent(getApplicationContext(), WebsiteView.class));
+        Intent i = new Intent(getApplicationContext(), WebsiteView.class);
+        i.putExtra(Constants.WEB, receivedSchool.getWebsite_url());
+
+        startActivity(i);
     }
 
     @Override
