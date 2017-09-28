@@ -130,6 +130,8 @@
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
+                        android:foregroundGravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:text="Call: +27851 56 555"
                         android:textColor="@android:color/white" />
 
@@ -143,6 +145,7 @@
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Fax: +2848 4 4 4 4"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
