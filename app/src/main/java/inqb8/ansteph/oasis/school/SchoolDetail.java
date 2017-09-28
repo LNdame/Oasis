@@ -9,6 +9,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +25,9 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
+import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.School;
 import inqb8.ansteph.oasis.website.WebsiteView;
 
@@ -33,6 +37,7 @@ public class SchoolDetail extends AppCompatActivity {
     TextView txtaddress, txtName, txtLearnerLevel,txtGeotag, txtTelephone, txtFax, txtEmail, txtWebsite;
     ImageView imgLogo;
     public static String SCHOOL_PARAM = "school";
+
 
     public School receivedSchool;
 
@@ -110,6 +115,30 @@ public class SchoolDetail extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.school_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void gotoMap(View view)
     {
 
@@ -122,7 +151,10 @@ public class SchoolDetail extends AppCompatActivity {
 
     public void gotoWebsite(View view)
     {
-        startActivity(new Intent(getApplicationContext(), WebsiteView.class));
+        Intent i = new Intent(getApplicationContext(), WebsiteView.class);
+        i.putExtra(Constants.WEB, receivedSchool.getWebsite_url());
+
+        startActivity(i);
     }
 
     @Override

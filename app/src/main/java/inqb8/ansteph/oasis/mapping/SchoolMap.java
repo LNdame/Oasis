@@ -109,6 +109,10 @@ public class SchoolMap extends AppCompatActivity
             return true;
         }
 
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

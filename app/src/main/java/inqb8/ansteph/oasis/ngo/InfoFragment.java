@@ -1,6 +1,8 @@
 package inqb8.ansteph.oasis.ngo;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
 import inqb8.ansteph.oasis.model.Organisation;
+import inqb8.ansteph.oasis.website.WebsiteView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,9 +80,41 @@ public class InfoFragment extends Fragment {
 
         setValue(mOrganisation);
 
+        txtWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoWebsite(v) ;
+            }
+        });
+
+        txtAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoMap(v);
+            }
+        });
+
         return rootView;
     }
 
+
+    public void gotoMap(View view)
+    {
+
+        String address = "http://maps.google.co.in/maps?q=" + mOrganisation.getAddressline1();
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(address));
+        startActivity(intent);
+
+    }
+
+
+    public void gotoWebsite(View view)
+    {
+        Intent i = new Intent(getActivity(), WebsiteView.class);
+        i.putExtra(Constants.WEB, mOrganisation.getGeneralInfo().getWebsiteurl());
+
+        startActivity(i);
+    }
 
     public void setValue(Organisation org)
     {

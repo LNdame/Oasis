@@ -208,6 +208,14 @@
             android:name=".contentprovider.ProgrammeContentProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.programmecontentprovider"
             android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name=".intro.WelcomePage" />
+
+        <provider
+            android:name=".contentprovider.Organisation_SchoolContentProvider"
+            android:authorities="inqb8.ansteph.oasis.contentprovider.organisationschoolcontentprovider"
+            android:enabled="true"
             android:exported="false"></provider>
     </application>
 

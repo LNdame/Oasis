@@ -2,6 +2,7 @@ package inqb8.ansteph.oasis.website;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -9,6 +10,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +25,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
+import inqb8.ansteph.oasis.mapping.Welcome;
+import inqb8.ansteph.oasis.school.SchoolDetail;
 
 public class WebsiteView extends AppCompatActivity {
 
@@ -28,6 +35,7 @@ public class WebsiteView extends AppCompatActivity {
     private ProgressBar progressBar;
     private float m_downX;
     CoordinatorLayout coordinatorLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +53,26 @@ public class WebsiteView extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        String url  = "";
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null)
+        {
+            url = bundle.getString(Constants.WEB);
+        }
 
         mWebView = (WebView) findViewById(R.id.webview);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
 
         initWebView();
-        mWebView.loadUrl("https://www.inqb8.co.za");
+
+        if(url!= null && !TextUtils.isEmpty(url))
+        {
+            mWebView.loadUrl(url);
+        }else{
+            mWebView.loadUrl("https://www.inqb8.co.za");
+        }
+
 
 
        // initWebView("https://www.inqb8.co.za");
@@ -127,6 +148,32 @@ public class WebsiteView extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.website, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 
     private class MyWebChromeClient extends WebChromeClient {
         Context context;

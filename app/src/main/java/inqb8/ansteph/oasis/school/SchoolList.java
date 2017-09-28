@@ -37,6 +37,7 @@ import inqb8.ansteph.oasis.model.Organisation;
 import inqb8.ansteph.oasis.model.School;
 import inqb8.ansteph.oasis.model.WorkArea;
 import inqb8.ansteph.oasis.ngo.NGOList;
+import inqb8.ansteph.oasis.ngo.WorKAreaList;
 
 public class SchoolList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener, SearchView.OnQueryTextListener {
@@ -189,7 +190,9 @@ public class SchoolList extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
+        if(id==R.id.action_home){
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -212,7 +215,7 @@ public class SchoolList extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-            startActivity(new Intent(getApplicationContext(), NGOList.class));
+            startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
             startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_feedback){
