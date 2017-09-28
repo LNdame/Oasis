@@ -25,6 +25,7 @@ import inqb8.ansteph.oasis.ngo.NGOList;
 import inqb8.ansteph.oasis.registration.EmailPassword;
 import inqb8.ansteph.oasis.school.SchoolList;
 import inqb8.ansteph.oasis.toolkit.Previewer;
+import inqb8.ansteph.oasis.toolkit.ToolKitLineView;
 import inqb8.ansteph.oasis.toolkit.ToolKitList;
 
 public class Welcome extends AppCompatActivity
@@ -145,7 +146,7 @@ public class Welcome extends AppCompatActivity
         } else if (id == R.id.nav_ngo_list) {
             startActivity(new Intent(getApplicationContext(), NGOList.class));
         } else if (id == R.id.nav_toolkit) {
-            startActivity(new Intent(getApplicationContext(), ToolKitList.class));
+            startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){

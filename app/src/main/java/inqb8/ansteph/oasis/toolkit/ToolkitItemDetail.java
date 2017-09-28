@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,6 +27,7 @@ import java.io.OutputStream;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.mapping.Welcome;
+import inqb8.ansteph.oasis.toolkit.fragitems.PrePlanningFragment;
 
 public class ToolkitItemDetail extends AppCompatActivity {
 
@@ -44,6 +48,13 @@ public class ToolkitItemDetail extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Fragment fragment = new PrePlanningFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .addToBackStack(PrePlanningFragment.TAG);
+        fragmentTransaction.replace(R.id.container_body, fragment);
+        fragmentTransaction.commit();
     }
 
 

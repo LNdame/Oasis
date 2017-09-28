@@ -13,7 +13,6 @@
     <dimen name="field_width_standard">160dp</dimen>
 
 
-
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
     <dimen name="img_width_height">120dp</dimen>
@@ -22,4 +21,17 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+
+
+    <dimen name="font_default">16dp</dimen>
+    <dimen name="font_small">12dp</dimen>
+    <dimen name="offset_default">3dp</dimen>
+    <dimen name="padding_default">12dp</dimen>
+
+    <dimen name="data_item_row_height">45dp</dimen>
+    <dimen name="data_item_row_padding">5dp</dimen>
+
+    <dimen name="level_beam_line_width">6dp</dimen>
+    <dimen name="level_beam_line_offset">2dp</dimen>
 </resources>

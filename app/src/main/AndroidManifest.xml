@@ -216,7 +216,17 @@
             android:name=".contentprovider.Organisation_SchoolContentProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.organisationschoolcontentprovider"
             android:enabled="true"
-            android:exported="false"></provider>
+            android:exported="false" />
+
+        <activity
+            android:name=".toolkit.ToolKitLineView"
+            android:label="@string/title_activity_tool_kit_line_view"
+            android:parentActivityName=".mapping.Welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+        </activity>
     </application>
 
 </manifest>
