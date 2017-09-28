@@ -30,8 +30,8 @@
         <inqb8.ansteph.oasis.customview.BlockButton
 
             app:pushDepthDp="6"
-            app:buttonColor="#adb6b7"
-            app:buttonGapColor="#292424"
+            app:buttonColor="#3546a7"
+            app:buttonGapColor="#1e275c"
             android:id="@+id/btn_show_basic_dialog"
             android:layout_width="match_parent"
             android:layout_height="50dp"
