@@ -29,6 +29,7 @@ public class Organisation implements Serializable{
 
     WorkArea workArea;
 
+    String geotag;
 
 
     public Organisation() {
@@ -213,5 +214,13 @@ public class Organisation implements Serializable{
 
     public void setWorkArea(WorkArea workArea) {
         this.workArea = workArea;
+    }
+
+    public String getGeotag() {
+        return geotag;
+    }
+
+    public void setGeotag(String geotag) {
+        this.geotag = geotag;
     }
 }

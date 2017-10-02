@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="40"
-        android:background="@android:color/white"
+        android:background="@drawable/school_half_one"
         android:scaleType="fitCenter"
         app:srcCompat="@mipmap/ic_launcher" />
 
@@ -61,84 +61,119 @@
         android:layout_weight="20"
         android:background="@color/colorPrimaryLight">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:layout_margin="5dp"
             android:background="@drawable/school_detail__border"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
+            android:weightSum="2"
             android:id="@+id/relativeLayout2">
 
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+
+                    android:layout_marginLeft="2dp"
+                    android:tint="@android:color/white"
+                    app:srcCompat="@drawable/icons8_marker_96" />
+
+
+                <TextView
+                    android:id="@+id/txtSchoolAddress"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:clickable="true"
+                    android:onClick="gotoMap"
+                    android:text="154 Admiralty Way, Summerstrand, Port Elizabeth, 6001"
+                    android:textColor="@android:color/white" />
+
+
+
+
+            </LinearLayout>
             <View
 
                 android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="25dp"
+                android:layout_width="1dp"
+                android:layout_marginRight="8dp"
+
+                android:layout_height="match_parent"
+
                 android:background="@android:color/white"
-                android:rotation="90"></View>
+                ></View>
 
-            <TextView
-                android:id="@+id/txtSchoolCall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Call: +27851 56 555"
-                android:textColor="@android:color/white" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txtFax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/txtSchoolCall"
-                android:layout_below="@+id/txtSchoolCall"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:text="Fax: +2848 4 4 4 4"
-                android:textColor="@android:color/white" />
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
 
-            <TextView
-                android:id="@+id/txtSchoolAddress"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:clickable="true"
-                android:onClick="gotoMap"
-                android:text="154 Admiralty Way, Summerstrand, Port Elizabeth, 6001"
-                android:textColor="@android:color/white" />
+                    android:tint="@android:color/white"
+                    app:srcCompat="@drawable/icons8_touchscreen_smartphone_96"
+                     />
 
-        </RelativeLayout>
+                <LinearLayout
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/txtFax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/relativeLayout2"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:tint="@android:color/white"
-            app:srcCompat="@drawable/icons8_marker_96" />
+                        android:text="Fax: +2848 4 4 4 4"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@android:color/white" />
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginEnd="159dp"
-            android:tint="@android:color/white"
-            app:srcCompat="@drawable/icons8_touchscreen_smartphone_96"
-            android:layout_centerVertical="true"
-            android:layout_alignEnd="@+id/relativeLayout2" />
+                    <TextView
+                        android:id="@+id/txtSchoolCall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Call: +27851 56 555"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
 
     </RelativeLayout>
 

@@ -1,13 +1,125 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="4"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="inqb8.ansteph.oasis.toolkit.fragitems.PartnershipFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/icon"
+            style="@style/ThemeOverlay.FirebaseIcon"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/desc_OASIS_lockup"
+            android:src="@drawable/file" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            android:text="Partnership Agreement "
+            android:theme="@style/ThemeOverlay.MyTitleText" />
+
+        <View
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white_back"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="For Both NGOs and Schools:"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Are all necessary stakeholders involved in agreement?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="SGB and Principal"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="NGO Director/Programme manager"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Has the organisation created an MOU?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="MOU Template (Template doc 4)"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Does the MOU stipulate all considerations?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="MOU Considerations (Checklist doc 5)"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Are there designated roles in the partnership?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

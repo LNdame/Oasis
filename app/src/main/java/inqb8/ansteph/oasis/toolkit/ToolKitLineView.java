@@ -22,7 +22,11 @@ import java.util.List;
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.TimeLineAdapter;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
+import inqb8.ansteph.oasis.mapping.NGOMap;
+import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
+import inqb8.ansteph.oasis.ngo.WorKAreaList;
+import inqb8.ansteph.oasis.school.SchoolList;
 import inqb8.ansteph.oasis.timelinemodel.OrderStatus;
 import inqb8.ansteph.oasis.timelinemodel.Orientation;
 import inqb8.ansteph.oasis.timelinemodel.TimeLineModel;
@@ -93,13 +97,13 @@ public class ToolKitLineView extends AppCompatActivity
 
     private void setDataListItems(){
         mDataList.add(new TimeLineModel("Pre-Planning", "Before you start!",  OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Developing a Plan", "Next",  OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Initial Communication", "Next", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Partnership Agreement", "Next", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Introducing the Programme", "Next", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Programme Implementation", "Next", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Monitoring and Evaluation", "Next", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Exiting a Program", "Can restart the process from the top", OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Developing a Plan", "What is needed to prepare for a programme",  OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Initial Communication", "How to present ideas effectively", OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Partnership Agreement", "How to establish a collaborative relationship", OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Introducing the Programme", "How to get buy-in from various stakeholders", OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Programme Implementation", "How to manage a quality programme", OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Monitoring and Evaluation", "How to make sure the work is impactful", OrderStatus.COMPLETED));
+        mDataList.add(new TimeLineModel("Exiting a Program", "How to leave on a good note", OrderStatus.COMPLETED));
 
     }
 
@@ -145,19 +149,28 @@ public class ToolKitLineView extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_welcome) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(getApplicationContext(), Welcome.class));
+        } else if (id == R.id.nav_school_map) {
+            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_school_list) {
+            startActivity(new Intent(getApplicationContext(), SchoolList.class));
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_ngo_map) {
+            startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_ngo_list) {
+            startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
+        } else if (id == R.id.nav_toolkit) {
+            //  startActivity(new Intent(getApplicationContext(), ToolKitList.class));
+        } else if (id == R.id.nav_feedback){
+            // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+        } else if (id == R.id.nav_logout){
+            // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -167,7 +180,9 @@ public class ToolKitLineView extends AppCompatActivity
     @Override
     public void onRecyclerViewItemClicked(View v, int position) {
         Intent i = new Intent(this,ToolkitItemDetail.class);
-        // i.putExtra("book", mBookList.get(position) );
+
+        i.putExtra("position", position );
+        i.putExtra("title", mDataList.get(position).getMessage());
         startActivity(i);
     }
 }

@@ -13,7 +13,7 @@
     <color name="white_back">#ffffff</color>
     <color name="windowBackground">#ECEFF1</color>
 
-
+    <color name="mapocean">#ff9e80</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>

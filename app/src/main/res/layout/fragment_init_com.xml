@@ -1,13 +1,168 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="inqb8.ansteph.oasis.toolkit.fragitems.InitComFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/icon"
+            style="@style/ThemeOverlay.FirebaseIcon"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/desc_OASIS_lockup"
+            android:src="@drawable/file" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            android:text="Initial Communication"
+            android:theme="@style/ThemeOverlay.MyTitleText" />
+
+        <View
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white_back"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="How should the organisation approach a school?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Key stakeholders to consider in order of importance:"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="School Governing Body"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="School Principal"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="School Management Team"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="NGOs should share key information from results of Development Plans"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Verbally communicate information from conceptual document"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Identify the school’s target groups"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Provide the time frame of the programme"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="A letter of invite to schools to implement NGO programme (Template doc 2)"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- end of first section-->
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="For School"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Has the organisation provided all necessary information about proposed programme?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Is the programme valuable in the context of what the school needs?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Will learners benefit from participating in the programme?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Does the school have the time, space and personnel to allow the programme to run successfully?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="How to invite an organisation to run a programme at your school?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- end of second section-->
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

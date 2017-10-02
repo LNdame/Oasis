@@ -23,11 +23,15 @@ import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
 import java.util.ArrayList;
 
+import javax.microedition.khronos.opengles.GL;
+
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.LayoutAdapter;
 import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.GeneralInfoColumns;
 import inqb8.ansteph.oasis.api.columns.OrganisationColumns;
+import inqb8.ansteph.oasis.api.columns.WorkAreaColumns;
+import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.helper.DbHelper;
 import inqb8.ansteph.oasis.mapping.NGOMap;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
@@ -37,6 +41,7 @@ import inqb8.ansteph.oasis.model.GeneralInfo;
 import inqb8.ansteph.oasis.model.Organisation;
 import inqb8.ansteph.oasis.model.WorkArea;
 import inqb8.ansteph.oasis.school.SchoolList;
+import inqb8.ansteph.oasis.toolkit.ToolKitLineView;
 
 public class NGOList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +50,7 @@ public class NGOList extends AppCompatActivity
 
     Category  mCurrentCategory ;
 
+    GlobalRetainer mGlobalRetainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +59,7 @@ public class NGOList extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        mGlobalRetainer = (GlobalRetainer) getApplicationContext();
 
 
 
@@ -90,6 +96,14 @@ public class NGOList extends AppCompatActivity
 
             setTitle(mCurrentCategory.getName());
 
+        }else{
+           mCurrentCategory = retrieveCategory(mGlobalRetainer.getCategoryID());
+
+            ArrayList<Organisation> orgList=retrieveList(mCurrentCategory);// databhelper.retrieveAllOrganisations();//
+
+            initViewPager(mCurrentCategory, orgList);
+
+            setTitle(mCurrentCategory.getName());
         }
 
 
@@ -107,7 +121,8 @@ public class NGOList extends AppCompatActivity
         ArrayList<Organisation>  organisations = new ArrayList<>();
 
         ContentResolver resolver = getContentResolver();
-        Cursor cursor = resolver.query(ContentTypes.ORGANISATION_CONTENT_URI, OrganisationColumns.PROJECTION, null,null,null);
+        Cursor cursor = resolver.query(ContentTypes.ORGANISATION_CONTENT_URI, OrganisationColumns.PROJECTION,
+                OrganisationColumns.WORK_AREA_ID + "=?",new String[]{String.valueOf(cat.getId())},null);
 
         if(cursor.moveToFirst()){
             do{
@@ -124,7 +139,7 @@ public class NGOList extends AppCompatActivity
                 organisation.setContactperson2Position((cursor.getString(cursor.getColumnIndex(OrganisationColumns.CONTACTPERSON2_POSITION))));
 
                 // cat.setDescription((cursor.getString(cursor.getColumnIndex(OrganisationColumns.DESCRIPTION))));
-
+                organisation.setGeotag((cursor.getString(cursor.getColumnIndex(OrganisationColumns.GEOTAG))));
                 organisation.setWorkArea(new WorkArea(cat.getId(),cat.getName(),cat.getDescription()));
 
                 int genId = (cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID)))!=null ?
@@ -178,6 +193,34 @@ public class NGOList extends AppCompatActivity
 
 
         return  generalInfo;
+    }
+
+
+
+    public Category retrieveCategory(int id)
+    {
+        Category cat = new Category();
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.WORKAREA_CONTENT_URI, WorkAreaColumns.PROJECTION, WorkAreaColumns._ID + "=?",
+                new String[]{String.valueOf(id)},null);
+
+        if(cursor.moveToFirst()){
+            do{
+                cat.setId(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+
+                cat.setName((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.NAME))));
+                cat.setDescription((cursor.getString(cursor.getColumnIndex(WorkAreaColumns.DESCRIPTION))));
+
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return cat;
     }
 
 
@@ -330,7 +373,7 @@ public class NGOList extends AppCompatActivity
         } else if (id == R.id.nav_ngo_list) {
             startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
-            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+            startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){

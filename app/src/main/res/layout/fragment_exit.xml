@@ -1,13 +1,166 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="4"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="inqb8.ansteph.oasis.toolkit.fragitems.ExitFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/icon"
+            style="@style/ThemeOverlay.FirebaseIcon"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/desc_OASIS_lockup"
+            android:src="@drawable/file" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            android:text="Exiting a Program"
+            android:theme="@style/ThemeOverlay.MyTitleText" />
+
+        <View
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white_back"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="What should NGOs consider?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="How will you celebrate program achievement?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Award ceremony"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Certificate"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Photo documentation"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What to do when things don’t work?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Improving program vs. funding vs. community needs"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Does your programme have potential for extension or expansion?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Would extension work with available funds and resources?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Would expansion work in a different community context?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <!-- end of first section-->
+
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="What should schools consider?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What were the benefits of the partnership?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What were the challenges?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What could be adjusted in future?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Does the programme still meet a need within the school and community?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <!-- end of second section-->
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

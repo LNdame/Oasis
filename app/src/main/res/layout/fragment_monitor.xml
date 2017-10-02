@@ -1,13 +1,200 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="4"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="inqb8.ansteph.oasis.toolkit.fragitems.MonitorFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/icon"
+            style="@style/ThemeOverlay.FirebaseIcon"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/desc_OASIS_lockup"
+            android:src="@drawable/file" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            android:text="Monitoring &amp; Evaluation "
+            android:theme="@style/ThemeOverlay.MyTitleText" />
+
+        <View
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white_back"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="What should NGOs consider?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="Does your program have SMART Goals?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What do you want to observe? (Template doc 12)"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What can you look for when monitoring?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Attendance"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Behaviour of participants"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Activities done"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Method of programme"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Learner to facilitator ratio"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Environment/venue of program"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="How can you evaluate your impact?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Survey participants"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Interview participants"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Assess participants"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Observe participants"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelThree
+                app:infotext="Reflect with participants (focus group)"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+
+            <!-- end of first section-->
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelOne
+                app:infotext="What should schools consider?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="What should the school be monitoring?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="How can the school indicate success or the progress of its learners?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <inqb8.ansteph.oasis.customview.TextViewLevelTwo
+                app:infotext="How can the school express its concerns about the programme in a professional way?"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- end of second section-->
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

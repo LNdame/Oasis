@@ -13,6 +13,7 @@ import android.widget.TextView;
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.app.Constants;
 import inqb8.ansteph.oasis.model.Organisation;
+import inqb8.ansteph.oasis.utils.GeoTagUtils;
 import inqb8.ansteph.oasis.website.WebsiteView;
 
 /**
@@ -101,9 +102,21 @@ public class InfoFragment extends Fragment {
     public void gotoMap(View view)
     {
 
+        double [] tag  = GeoTagUtils.stripGeotagOrg(mOrganisation.getGeotag());
+
+        if(tag!=null)
+        {
+            String address  = "http://maps.google.com/maps?daddr=" + tag[0]+" , "+tag[1];
+
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse(address));
+            startActivity(intent);
+
+        }else{
         String address = "http://maps.google.co.in/maps?q=" + mOrganisation.getAddressline1();
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(address));
         startActivity(intent);
+        }
 
     }
 

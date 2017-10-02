@@ -15,6 +15,8 @@ public class GlobalRetainer extends Application {
     private static GlobalRetainer mInstance;
     private static Context mAppContext;
 
+    private int categoryID;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,4 +31,11 @@ public class GlobalRetainer extends Application {
     }
 
 
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
 }

@@ -80,13 +80,13 @@ public class PrePlanningFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_pre_planning, container, false);
 
 
-        mListView = (MultiLevelListView) rootView.findViewById(R.id.listView);
+       /* mListView = (MultiLevelListView) rootView.findViewById(R.id.listView);
         ListAdapter listAdapter = new ListAdapter();
 
         mListView.setAdapter(listAdapter);
         mListView.setOnItemClickListener(mOnItemClickListener);
 
-        listAdapter.setDataItems(DataProvider.getInitialItems());
+        listAdapter.setDataItems(DataProvider.getInitialItems());*/
         return rootView;
     }
 

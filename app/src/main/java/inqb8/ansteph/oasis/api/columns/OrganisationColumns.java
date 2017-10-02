@@ -20,12 +20,13 @@ public interface OrganisationColumns extends DataColumns {
     String   PROVINCE_ID ="province_id";
     String           WORK_AREA_ID ="work_area_id";
   String GENERAL_ID = "general_id";
+  String GEOTAG = "geotag";
 
 
 
 
 
     String [] PROJECTION = new String[]{_ID,NAME, ADDRESS1, CONTACTPERSON1_NAME, CONTACTPERSON2_NAME, CONTACTPERSON1_POSITION,
-            CONTACTPERSON2_POSITION, SUBURB_ID, CITY_ID,PROVINCE_ID , WORK_AREA_ID, GENERAL_ID};
+            CONTACTPERSON2_POSITION, SUBURB_ID, CITY_ID,PROVINCE_ID , WORK_AREA_ID, GENERAL_ID,GEOTAG};
 
 }

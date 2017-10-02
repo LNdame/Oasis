@@ -1,6 +1,8 @@
 package inqb8.ansteph.oasis.mapping;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
@@ -26,10 +28,17 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
+import java.util.ArrayList;
+
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.api.ContentTypes;
+import inqb8.ansteph.oasis.api.columns.SchoolColumns;
+import inqb8.ansteph.oasis.model.School;
 import inqb8.ansteph.oasis.ngo.CategoryList;
 import inqb8.ansteph.oasis.ngo.NGOList;
 import inqb8.ansteph.oasis.school.SchoolList;
+import inqb8.ansteph.oasis.toolkit.ToolKitLineView;
+import inqb8.ansteph.oasis.utils.GeoTagUtils;
 
 public class SchoolMap extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,11 +66,15 @@ public class SchoolMap extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        final ArrayList<double[]> GeotagList =retrieveGeotag(retrieveList());
+
+
+
         Mapbox.getInstance(this, "pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoeG5qZ3QxbTY3MnhwbmN6ODE0bTA3In0.XZ6tlAzf1ynmBO7Lc_OK6A");
 
         // mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf
         IconFactory iconFactory = IconFactory.getInstance(SchoolMap.this);
-        final Icon icon = iconFactory.fromResource(R.drawable.education_marker);
+        final Icon icon = iconFactory.fromResource(R.drawable.edu_marker);
 
 
         mapView = (MapView) findViewById(R.id.mapview);
@@ -70,7 +83,14 @@ public class SchoolMap extends AppCompatActivity
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 mapboxMap.setStyle("mapbox://styles/ansteph/cj67sdtdk0slv2smtp8xawfgm");
-                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(-34.004441, 25.669534)).icon(icon));
+
+                for(double[]tag:GeotagList)
+                {
+                    mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(tag[0], tag[1])).icon(icon));
+                }
+
+
+              //  mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(-34.004441, 25.669534)).icon(icon));
             }
         });
 
@@ -79,6 +99,73 @@ public class SchoolMap extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+
+    private ArrayList<double[]> retrieveGeotag(ArrayList<School> schools)
+    {
+        ArrayList<double[]> Geotags = new ArrayList<>();
+
+        for (School school:schools)
+        {
+            double [] tag  = GeoTagUtils.stripGeotag(school.getGeotag());
+            Geotags.add(tag);
+        }
+
+
+        return Geotags;
+    }
+
+
+
+    private ArrayList<School> retrieveList()
+    {
+        ArrayList<School>  schools = new ArrayList<>();
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(ContentTypes.SCHOOL_CONTENT_URI, SchoolColumns.PROJECTION, null,null,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                School school = new School();
+
+                school.set_id(((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0));
+
+                school.setName((cursor.getString(cursor.getColumnIndex(SchoolColumns.NAME))));
+                school.setAddress((cursor.getString(cursor.getColumnIndex(SchoolColumns.ADDRESS))));
+                school.setLearnerLevel((cursor.getString(cursor.getColumnIndex(SchoolColumns.LEARNER_LEVEL))));
+
+                school.setGeotag((cursor.getString(cursor.getColumnIndex(SchoolColumns.GEOTAG))));
+                school.setTelephone((cursor.getString(cursor.getColumnIndex(SchoolColumns.TELEPHONE))));
+                school.setEmail((cursor.getString(cursor.getColumnIndex(SchoolColumns.EMAIL))));
+                school.setSynopsys((cursor.getString(cursor.getColumnIndex(SchoolColumns.SYNOPSIS))));
+                school.setFax((cursor.getString(cursor.getColumnIndex(SchoolColumns.FAX))));
+
+                school.setWebsite_url((cursor.getString(cursor.getColumnIndex(SchoolColumns.WEBSITE_URL))));
+                school.setImg((cursor.getBlob(cursor.getColumnIndex(SchoolColumns.LOGO))));
+
+
+
+               /* int genId = (cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID)))!=null ?
+                        Integer.parseInt(cursor.getString(cursor.getColumnIndex(OrganisationColumns.GENERAL_ID))):0;*/
+
+                // organisation.setGeneralInfo(retrieveGenInfo(genId));
+
+
+                schools.add(school);
+
+            }while(cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return  schools;
+    }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -137,7 +224,7 @@ public class SchoolMap extends AppCompatActivity
         } else if (id == R.id.nav_ngo_list) {
             startActivity(new Intent(getApplicationContext(), NGOList.class));
         } else if (id == R.id.nav_toolkit) {
-            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+            startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){

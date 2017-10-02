@@ -27,7 +27,15 @@ import java.io.OutputStream;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.mapping.Welcome;
+import inqb8.ansteph.oasis.ngo.ProgramFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.DevelopFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.ExitFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.InitComFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.IntroProgFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.MonitorFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.PartnershipFragment;
 import inqb8.ansteph.oasis.toolkit.fragitems.PrePlanningFragment;
+import inqb8.ansteph.oasis.toolkit.fragitems.ProgImpFragment;
 
 public class ToolkitItemDetail extends AppCompatActivity {
 
@@ -49,12 +57,51 @@ public class ToolkitItemDetail extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle !=null)
+        {
+
+           int position  = bundle.getInt("position");
+
+            String title  =bundle.getString("title");
+            setTitle(title);
+
+            Fragment fragment = null;
+
+            switch (position)
+            {
+                case 0: fragment  = new PrePlanningFragment();break;
+                case 1: fragment  = new DevelopFragment();break;
+                case 2: fragment  = new InitComFragment();break;
+                case 3: fragment  = new PartnershipFragment();break;
+                case 4: fragment  = new IntroProgFragment();break;
+                case 5: fragment  = new ProgImpFragment();break;
+                case 6: fragment  = new MonitorFragment();break;
+                case 7: fragment  = new ExitFragment();break;
+                default: fragment  = new PrePlanningFragment();break;
+            }
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                    .addToBackStack(fragment.getClass().getSimpleName());
+            fragmentTransaction.replace(R.id.container_body, fragment);
+            fragmentTransaction.commit();
+
+
+
+        }else {
+
+
+            setTitle("Pre-Planning");
         Fragment fragment = new PrePlanningFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
                 .addToBackStack(PrePlanningFragment.TAG);
         fragmentTransaction.replace(R.id.container_body, fragment);
         fragmentTransaction.commit();
+        }
     }
 
 

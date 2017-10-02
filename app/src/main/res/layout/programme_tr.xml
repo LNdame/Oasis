@@ -35,7 +35,7 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_gravity="start"
+        android:layout_gravity="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
@@ -56,38 +56,37 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_gravity="end"
+        android:layout_gravity="start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
             android:textSize="10sp"
             android:padding="5dp"
             android:textStyle="bold"
-            android:text="Frequency: "
+            android:text="Education: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
         <TextView
-            android:id="@+id/txtProgFreq"
+            android:id="@+id/txtProgEducator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="10sp"
             android:padding="5dp"
-            android:text="Frequency" />
-
+            android:text="For Educator \nor Parent" />
 
     </LinearLayout>
 
-</FrameLayout>
 
+
+</FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_gravity="start"
@@ -97,23 +96,36 @@
                 android:textSize="10sp"
                 android:padding="5dp"
                 android:textStyle="bold"
-                android:text="Education: "
+                android:text="Frequency: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
-                android:id="@+id/txtProgEducator"
+                android:id="@+id/txtProgFreq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="10sp"
                 android:padding="5dp"
-                android:text="For Educator \nor Parent" />
+                android:text="Frequency" />
+
 
         </LinearLayout>
 
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_gravity="end"
+            android:layout_gravity="start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 

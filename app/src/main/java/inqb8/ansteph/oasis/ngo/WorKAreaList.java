@@ -26,6 +26,7 @@ import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.CategoryRecyclerViewAdapter;
 import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.WorkAreaColumns;
+import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.helper.DbHelper;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
 import inqb8.ansteph.oasis.mapping.NGOMap;
@@ -34,6 +35,7 @@ import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.Category;
 import inqb8.ansteph.oasis.model.WorkArea;
 import inqb8.ansteph.oasis.school.SchoolList;
+import inqb8.ansteph.oasis.toolkit.ToolKitLineView;
 
 public class WorKAreaList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewClickListener {
@@ -49,12 +51,16 @@ public class WorKAreaList extends AppCompatActivity
 
     public static final String WORKAREA = "WORK_AREA";
 
+    GlobalRetainer mGlobalRetainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wor_karea_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mGlobalRetainer = (GlobalRetainer) getApplicationContext();
 
         try {
             databhelper= new DbHelper(getApplicationContext());
@@ -182,7 +188,7 @@ public class WorKAreaList extends AppCompatActivity
         } else if (id == R.id.nav_ngo_list) {
            // startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
-            startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+            startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){
@@ -201,6 +207,7 @@ public class WorKAreaList extends AppCompatActivity
 
         i.putExtra(WORKAREA, mCategoryList.get(position) );
         // i.putExtra("book", mBookList.get(position) );
+        mGlobalRetainer.setCategoryID(mCategoryList.get(position).getId());
         startActivity(i);
     }
 }

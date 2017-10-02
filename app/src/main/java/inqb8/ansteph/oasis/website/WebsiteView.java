@@ -68,7 +68,7 @@ public class WebsiteView extends AppCompatActivity {
 
         if(url!= null && !TextUtils.isEmpty(url))
         {
-            mWebView.loadUrl(url);
+            mWebView.loadUrl("https://"+url);
         }else{
             mWebView.loadUrl("https://www.inqb8.co.za");
         }

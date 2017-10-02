@@ -10,5 +10,16 @@
     </declare-styleable>
 
 
+    <declare-styleable name="TextViewLevelOne">
+        <attr format="string" name="infotext1"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextViewLevelTwo">
+        <attr format="string" name="infotext2"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextViewLevelThree">
+        <attr format="string" name="infotext"/>
+    </declare-styleable>
 
 </resources>

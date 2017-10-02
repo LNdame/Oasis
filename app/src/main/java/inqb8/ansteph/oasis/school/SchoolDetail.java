@@ -19,6 +19,7 @@ import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
@@ -29,6 +30,7 @@ import inqb8.ansteph.oasis.app.Constants;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
 import inqb8.ansteph.oasis.mapping.Welcome;
 import inqb8.ansteph.oasis.model.School;
+import inqb8.ansteph.oasis.utils.GeoTagUtils;
 import inqb8.ansteph.oasis.website.WebsiteView;
 
 public class SchoolDetail extends AppCompatActivity {
@@ -69,10 +71,13 @@ public class SchoolDetail extends AppCompatActivity {
         setTitle(receivedSchool.getName());
         setValues(receivedSchool);
 
+        final double [] geotag = GeoTagUtils.stripGeotag(receivedSchool.getGeotag());
+
         Mapbox.getInstance(this, "pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoeG5qZ3QxbTY3MnhwbmN6ODE0bTA3In0.XZ6tlAzf1ynmBO7Lc_OK6A");
 
         // mapbox://styles/ansteph/cj65fp5dt6a5p2rpdy1r7o6zf
         IconFactory iconFactory = IconFactory.getInstance(SchoolDetail.this);
+        //final Icon icon = iconFactory.fromResource(R.drawable.education_marker);
         final Icon icon = iconFactory.fromResource(R.drawable.edu_marker);
 
 
@@ -82,7 +87,10 @@ public class SchoolDetail extends AppCompatActivity {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 mapboxMap.setStyle("mapbox://styles/ansteph/cj67sdtdk0slv2smtp8xawfgm");
-                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(-34.004441, 25.669534)).icon(icon));
+               // mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(-34.004441, 25.669534)).icon(icon));
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(geotag[0], geotag[1])).icon(icon));
+                mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                .target(new LatLng(geotag[0], geotag[1])).build());
             }
         });
 
@@ -115,6 +123,20 @@ public class SchoolDetail extends AppCompatActivity {
 
     }
 
+    public double [] stripGeotag(String geotag)
+    {
+        String [] tag = geotag.split(",");
+
+        double []geolatlong = new double[2];
+        geolatlong[0] = Double.parseDouble(tag[1]) ;
+        geolatlong[1] = Double.parseDouble(tag[0]) ;
+
+        return geolatlong;
+
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -142,9 +164,25 @@ public class SchoolDetail extends AppCompatActivity {
     public void gotoMap(View view)
     {
 
-        String address = "http://maps.google.co.in/maps?q=154 Admiralty Way, Summerstrand, Port Elizabeth, 6001";
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(address));
-        startActivity(intent);
+
+        double [] tag  = GeoTagUtils.stripGeotag(receivedSchool.getGeotag());
+
+        if(tag!=null)
+        {
+            String address  = "http://maps.google.com/maps?daddr=" + tag[0]+" , "+tag[1];
+
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse(address));
+            startActivity(intent);
+
+        }else{
+
+            String address = "http://maps.google.co.in/maps?q="+ receivedSchool.getAddress() ;
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(address));
+            startActivity(intent);
+        }
+
+
 
     }
 
