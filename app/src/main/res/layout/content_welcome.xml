@@ -23,8 +23,8 @@
             android:layout_marginTop="150dp"
             android:layout_gravity="center_horizontal|center"
             app:pushDepthDp="6"
-            app:buttonColor="@color/mapocean"
-            app:buttonGapColor="#de413e"
+            app:buttonColor="@color/selectNavOrange"
+            app:buttonGapColor="#a95e00"
             android:id="@+id/btn_show_NGO"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -51,12 +51,6 @@
 
 
     </LinearLayout>
-    <View
-
-        android:layout_margin="25dp"
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"></View>
 
 
     <LinearLayout
@@ -69,8 +63,8 @@
         <inqb8.ansteph.oasis.customview.BlockButton
             android:layout_marginBottom="150dp"
             app:pushDepthDp="6"
-            app:buttonColor="#adb6b7"
-            app:buttonGapColor="#292424"
+            app:buttonColor="#3546a7"
+            app:buttonGapColor="#1e275c"
             android:id="@+id/btn_show_basic_dialog"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

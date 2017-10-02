@@ -29,8 +29,8 @@
         <inqb8.ansteph.oasis.customview.BlockButton
 
             app:pushDepthDp="6"
-            app:buttonColor="@color/mapocean"
-            app:buttonGapColor="#de413e"
+            app:buttonColor="@color/selectNavOrange"
+            app:buttonGapColor="#a95e00"
             android:id="@+id/btn_show_basic_dialog"
             android:layout_width="match_parent"
             android:layout_height="50dp"
