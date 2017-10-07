@@ -94,4 +94,7 @@ public class SchoolRecyclerViewAdapter extends RecyclerView.Adapter<SchoolRecycl
             recyclerViewClickListener.onRecyclerViewItemClicked(v, position);
         }
     }
+
+
+
 }

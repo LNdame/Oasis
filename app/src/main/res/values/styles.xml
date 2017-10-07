@@ -49,6 +49,11 @@
         <item name="android:textSize">36sp</item>
     </style>
 
+    <style name="Toolkit_item_title" parent="AppTheme">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="ThemeOverlay.MyaboutText" parent="AppTheme">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>

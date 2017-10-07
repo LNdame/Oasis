@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.ngo.NGOList;
+import inqb8.ansteph.oasis.ngo.WorKAreaList;
 import inqb8.ansteph.oasis.registration.EmailPassword;
 import inqb8.ansteph.oasis.school.SchoolList;
 import inqb8.ansteph.oasis.toolkit.Previewer;
@@ -99,7 +100,7 @@ public class Welcome extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+           // super.onBackPressed();
         }
     }
 
@@ -144,7 +145,7 @@ public class Welcome extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-            startActivity(new Intent(getApplicationContext(), NGOList.class));
+            startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
             startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){

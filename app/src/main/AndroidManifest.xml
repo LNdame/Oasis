@@ -4,6 +4,8 @@
     package="inqb8.ansteph.oasis">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -151,11 +153,11 @@
         <activity
             android:name=".toolkit.Previewer"
             android:label="@string/title_activity_previewer"
-            android:parentActivityName=".mapping.Welcome"
+            android:parentActivityName=".toolkit.ToolkitItemDetail"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="inqb8.ansteph.oasis.mapping.Welcome" />
+                android:value="inqb8.ansteph.oasis.toolkit.ToolkitItemDetail" />
         </activity>
         <activity
             android:name=".registration.EmailPassword"

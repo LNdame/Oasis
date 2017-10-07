@@ -21,6 +21,7 @@ import java.util.List;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.adapter.TimeLineAdapter;
+import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.listener.RecyclerViewClickListener;
 import inqb8.ansteph.oasis.mapping.NGOMap;
 import inqb8.ansteph.oasis.mapping.SchoolMap;
@@ -43,12 +44,16 @@ public class ToolKitLineView extends AppCompatActivity
     public final static String EXTRA_ORIENTATION = "EXTRA_ORIENTATION";
     public final static String EXTRA_WITH_LINE_PADDING = "EXTRA_WITH_LINE_PADDING";
 
+    GlobalRetainer mGlobalRetainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_kit_line_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mGlobalRetainer = (GlobalRetainer) getApplicationContext();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +187,8 @@ public class ToolKitLineView extends AppCompatActivity
         Intent i = new Intent(this,ToolkitItemDetail.class);
 
         i.putExtra("position", position );
+        mGlobalRetainer.setToolkitPosition(position);
+        mGlobalRetainer.setToolkitTitle(mDataList.get(position).getMessage());
         i.putExtra("title", mDataList.get(position).getMessage());
         startActivity(i);
     }

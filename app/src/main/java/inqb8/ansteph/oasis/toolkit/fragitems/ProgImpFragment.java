@@ -1,13 +1,17 @@
 package inqb8.ansteph.oasis.toolkit.fragitems;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
+import inqb8.ansteph.oasis.toolkit.Previewer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +64,19 @@ public class ProgImpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prog_imp, container, false);
+        View rootView= inflater.inflate(R.layout.fragment_prog_imp, container, false);
+        Button btnChildProtection = (Button) rootView.findViewById(R.id.btnChildProtection);
+        btnChildProtection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.CHILD_PROTECTION_POLICY);
+
+                startActivity(intent);
+            }
+        });
+
+        return rootView;
     }
 
 }

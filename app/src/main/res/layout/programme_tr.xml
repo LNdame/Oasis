@@ -33,28 +33,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_gravity="end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="10sp"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:text="Duration: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/txtProgDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="10sp"
-            android:padding="5dp"
-            android:text="Duration and Cost" />
 
-    </LinearLayout>
 
 
     <LinearLayout
@@ -83,6 +62,28 @@
 
 
 </FrameLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:text="Duration: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtProgDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="10sp"
+            android:padding="5dp"
+            android:text="Duration and Cost" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

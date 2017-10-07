@@ -10,7 +10,15 @@
     tools:context="inqb8.ansteph.oasis.toolkit.ToolkitItemDetail"
     >
 
-<FrameLayout
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onEmailClicked"
+        android:text="Do Something" />
+
+    <FrameLayout
     android:id="@+id/container_body"
     android:layout_width="match_parent"
     android:layout_height="match_parent"></FrameLayout>

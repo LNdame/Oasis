@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="4"
+    android:weightSum="6"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="inqb8.ansteph.oasis.toolkit.fragitems.PrePlanningFragment">
 
@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="@color/white_back"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -31,21 +31,54 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
             android:text="Pre Planning"
-            android:theme="@style/ThemeOverlay.MyTitleText" />
+            android:theme="@style/Toolkit_item_title" />
 
         <View
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+
             android:background="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="2dp"/>
 
+        <HorizontalScrollView
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnHowtouse"
+                    android:drawableLeft="@drawable/ic_pdf_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/doc_border"
+                    android:text="How to use the toolkit" />
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+        <View
+
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
     </LinearLayout>
+
+
+
+
+
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="4">
 
         <LinearLayout
             android:layout_width="match_parent"

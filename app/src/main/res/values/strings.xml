@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Oasis</string>
+    <string name="app_name">OASIS</string>
     <string name="com.mapbox.mapboxsdk.accessToken" translatable="false">pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoejdtcmgxb3Q0MzNyeWlvdWhtYml5In0.hs9kEugjnqYXJMB41Fhxbw</string>
     <string name="title_activity_category_list">CategoryList</string>
 
@@ -8,10 +8,10 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_welcome">Welcome</string>
-    <string name="title_activity_school_list">SchoolList</string>
+    <string name="title_activity_school_list">School List</string>
     <string name="title_activity_ngolist">NGO List</string>
     <string name="title_activity_ngodetail">NGO Detail</string>
-    <string name="title_activity_school_detail">SchoolDetail</string>
+    <string name="title_activity_school_detail">School Detail</string>
     <string name="title_activity_school_map">School Map</string>
     <string name="title_activity_ngomap">NGO Map</string>
     <string name="title_activity_ngoprogramme">NGO Programme</string>
@@ -90,16 +90,29 @@
 
 
     <string name="slide_1_title">Hello from OASIS!</string>
-    <string name="slide_1_desc">ullam corporis suscipit laboriosam,,\n ut labore et dolore magnam aliquam commodi consequatur!</string>
+    <string name="slide_1_desc">OASIS (Organising After-School &amp; In-School) is a Community of Practice that began
+        from a partnership between The Learning Trust and the Centre for Community Schools at Nelson Mandela University.
+        This App is the outcome of the first project undertaken by OASIS. OASIS consists of various stakeholders working
+        in the education space in the Nelson Mandela Bay Metro, with focus on learner support programmes.
+</string>
 
-    <string name="slide_2_title">OASIS app is easy to use!</string>
-    <string name="slide_2_desc">Ted ut perspiciatis unde omnis iste natus error sit \n voluptatem accusantium doloremque!</string>
+    <string name="slide_2_title">About OASIS</string>
+    <string name="slide_2_desc">The OASIS App provides a central and easily accessible platform which contains information
+        on schools and NPO/NGOs with the aim of facilitating effective collaboration to strengthen the formal and informal
+        education space in the Metro.  The App is accessible to the broader public for informational purposes.
+</string>
 
-    <string name="slide_3_title">Across the Mandela Bay coming soon to the rest of South Africa</string>
-    <string name="slide_3_desc">Neque porro quisquam est,\n  qui dolorem ipsum quia dolor sit amet,\n  ullam corporis suscipit laboriosam!</string>
+    <string name="slide_3_title">Purpose of the OASIS App</string>
+    <string name="slide_3_desc">1.	A directory information for schools, including a location map.\n
+2.	A database of NPO/NGOs working with schools in the Metro, according to 6 focus areas.\n
+3.	A toolkit-framework that aims to facilitate the process of collaborative partnerships between schools &amp; NGOs.
+</string>
 
-    <string name="slide_4_title">All about YOU</string>
-    <string name="slide_4_desc">quis nostrum exercitationem ullam corporis suscipit,\n laboriosam, -> nisi ut </string>
+    <string name="slide_4_title">Contacting OASIS</string>
+    <string name="slide_4_desc">The OASIS App is currently housed under the Faculty of Education in the Centre for the Community School at Nelson Mandela University.\n
+If you wish to get in touch or involved in the project, you may contact,\n
+Mark Lamani: marklamani@gmail.com // 073 555 3667 \n
+Zikhona Tube: wendy.tube@nmmu.ac.za // 041 504 4021 </string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>

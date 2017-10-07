@@ -15,7 +15,10 @@ public class GlobalRetainer extends Application {
     private static GlobalRetainer mInstance;
     private static Context mAppContext;
 
+    private int toolkitPosition;
     private int categoryID;
+
+    private String toolkitTitle;
 
     @Override
     public void onCreate() {
@@ -37,5 +40,23 @@ public class GlobalRetainer extends Application {
 
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
+    }
+
+
+    public int getToolkitPosition() {
+        return toolkitPosition;
+    }
+
+    public void setToolkitPosition(int toolkitPosition) {
+        this.toolkitPosition = toolkitPosition;
+    }
+
+
+    public String getToolkitTitle() {
+        return toolkitTitle;
+    }
+
+    public void setToolkitTitle(String toolkitTitle) {
+        this.toolkitTitle = toolkitTitle;
     }
 }

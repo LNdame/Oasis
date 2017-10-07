@@ -1,13 +1,17 @@
 package inqb8.ansteph.oasis.toolkit.fragitems;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
+import inqb8.ansteph.oasis.toolkit.Previewer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,7 +66,31 @@ public class InitComFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_init_com, container, false);
+        View rootView= inflater.inflate(R.layout.fragment_init_com, container, false);
+
+        Button btnInviteNgo = (Button) rootView.findViewById(R.id.btnInviteNgo);
+        btnInviteNgo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.LETTER_INTEREST_NGO);
+
+                startActivity(intent);
+            }
+        });
+
+        Button btnInviteSchool = (Button) rootView.findViewById(R.id.btnInviteSchool);
+        btnInviteSchool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.LETTER_INTEREST_SCHOOL);
+
+                startActivity(intent);
+            }
+        });
+
+        return  rootView;
     }
 
 }

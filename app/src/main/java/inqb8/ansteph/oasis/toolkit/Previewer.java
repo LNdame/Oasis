@@ -3,9 +3,11 @@ package inqb8.ansteph.oasis.toolkit;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -23,9 +25,14 @@ import com.inqb8.ansteph.android_pdf_viewer.scroll.DefaultScrollHandle;
 import com.shockwave.pdfium.PdfDocument;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
 
 public class Previewer extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener {
 
@@ -37,6 +44,8 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
 
     public static final String SAMPLE_FILE = "ohs_regulation.pdf";
     public static final String READ_EXTERNAL_STORAGE = "android.permission.READ_EXTERNAL_STORAGE";
+
+    public static final String FILE  = "file";
 
     PDFView pdfView;
 
@@ -57,17 +66,21 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Sending to email", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                SendEmailReport();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle b = getIntent().getExtras();
+        String fileName = "";
         if(b!=null)
         {
-            mSentPath = b.getString("path");
-
+            fileName = b.getString(FILE);
+           // mSentPath = b.getString("path");
             //   Log.i("sent path",mSentPath);
+        }else{
+            fileName = Constants.INFO_PRINCIPAL;
         }
 
       //  File newdoc = new File(mSentPath);
@@ -78,7 +91,7 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
 
          uri = null;
 
-        afterViews();
+        afterViews(fileName);
     }
 
     public String getFileName(Uri uri) {
@@ -104,11 +117,11 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
 
 
     // @AfterViews
-    void afterViews() {
+    void afterViews(String assetFile) {
         if (uri != null) {
             displayFromUri(uri);
         } else {
-            displayFromAsset(SAMPLE_FILE);
+            displayFromAsset(assetFile);
         }
         setTitle(pdfFileName);
     }
@@ -116,7 +129,7 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
     private void displayFromAsset(String assetFileName) {
         pdfFileName = assetFileName;
 
-        pdfView.fromAsset(SAMPLE_FILE)
+        pdfView.fromAsset(pdfFileName)
                 .defaultPage(pageNumber)
                 .onPageChange(this)
                 .enableAnnotationRendering(true)
@@ -207,11 +220,21 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
 
 
         try{
-            String email ="ls20045@gmail.com";
-            String subject = "H & S Audit Report";
-            String msg ="Please find attached the Health and Safety report sent for your consideration";
+            String email =" ";
+            String subject = "Toolkit Template Document";
+            String msg ="Please find attached the toolkit template document sent for your consideration";
 
-            File file = new File(mSentPath);
+            File toolkitfolder = new File (Environment.getExternalStorageDirectory(), "Oasis_Toolkit");
+
+            if(!toolkitfolder.exists())   //this what should be used
+            {
+                toolkitfolder.mkdir();
+                // Log.i(TAG, "PDF 2 directory created");
+            }
+
+
+            File file = new File(copyanasset());
+
 
             final Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("plain/text");
@@ -232,6 +255,68 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
 
 
     }
+
+
+    private String copyanasset()
+    {
+        AssetManager assetManager = getAssets();
+        InputStream in = null;
+        OutputStream out = null;
+
+        File outFile = null;
+
+        File toolkitfolder = new File (Environment.getExternalStorageDirectory(), "Oasis_Toolkit");
+
+        if(!toolkitfolder.exists())   //this what should be used
+        {
+            toolkitfolder.mkdir();
+            // Log.i(TAG, "PDF 2 directory created");
+        }
+
+
+
+        try{
+            in = assetManager.open(pdfFileName);
+
+            outFile = new File(toolkitfolder+File.separator+pdfFileName);
+            out = new FileOutputStream(outFile);
+            copyFile(in, out);
+
+        }catch (IOException e)
+        {
+            Log.e("tag", "Failed to copy asset file: " + pdfFileName, e);
+        }
+        finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    // NOOP
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    // NOOP
+                }
+            }
+        }
+
+
+        return outFile.getPath();
+    }
+
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
+    }
+
+
 
 
 }

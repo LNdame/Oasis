@@ -81,6 +81,8 @@
         android:id="@+id/txtWebsite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/selectNavOrange"
         android:clickable="true"
         android:text="www.organization.com" />
 
@@ -121,6 +123,8 @@
     <TextView
         android:id="@+id/txtAddress"
         android:clickable="true"
+        android:textSize="16sp"
+        android:textColor="@color/selectNavOrange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="someplace somewhere" />

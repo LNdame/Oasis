@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -10,7 +10,7 @@
         android:id="@+id/tblprograme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+    android:gravity="top"
         android:background="@color/colorPrimaryLight"
        android:orientation="horizontal" >
 
@@ -28,13 +28,23 @@
 
 
     </LinearLayout>
+    <TextView
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/dot_light_screen3"
+        android:alpha="0.5"
+        android:text="Currently no active programme or the repository is not up to date"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:padding="5dp"
+        android:background="@color/white_back"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+</FrameLayout>

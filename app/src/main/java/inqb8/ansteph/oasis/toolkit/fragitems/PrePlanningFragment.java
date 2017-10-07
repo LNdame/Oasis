@@ -1,11 +1,13 @@
 package inqb8.ansteph.oasis.toolkit.fragitems;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
+import inqb8.ansteph.oasis.toolkit.Previewer;
 import inqb8.ansteph.oasis.toolkit.data.BaseItem;
 import inqb8.ansteph.oasis.toolkit.data.DataProvider;
 import inqb8.ansteph.oasis.toolkit.data.GroupItem;
@@ -79,7 +83,16 @@ public class PrePlanningFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_pre_planning, container, false);
 
+        Button btnHowtouse = (Button) rootView.findViewById(R.id.btnHowtouse);
+        btnHowtouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.HOW_TO_USE);
 
+                startActivity(intent);
+            }
+        });
        /* mListView = (MultiLevelListView) rootView.findViewById(R.id.listView);
         ListAdapter listAdapter = new ListAdapter();
 

@@ -1,13 +1,17 @@
 package inqb8.ansteph.oasis.toolkit.fragitems;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.app.Constants;
+import inqb8.ansteph.oasis.toolkit.Previewer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +64,56 @@ public class IntroProgFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_intro_prog, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_intro_prog, container, false);
+
+
+
+        Button btnInfoForPrincipal = (Button) rootView.findViewById(R.id.btnInfoForPrincipal);
+        btnInfoForPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.INFO_PRINCIPAL);
+
+                startActivity(intent);
+            }
+        });
+
+        Button btnInfoParent = (Button) rootView.findViewById(R.id.btnInfoParent);
+        btnInfoParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.INFO_PARENT);
+
+                startActivity(intent);
+            }
+        });
+
+
+        Button btnLettertolearner = (Button) rootView.findViewById(R.id.btnLettertolearner);
+        btnLettertolearner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.LETTER_PARENTS);
+
+                startActivity(intent);
+            }
+        });
+
+
+        Button btnInvitationtolearner = (Button) rootView.findViewById(R.id.btnInvitationtolearner);
+        btnInvitationtolearner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Previewer.class);
+                intent.putExtra(Previewer.FILE, Constants.INVITATION_LEARNER);
+
+                startActivity(intent);
+            }
+        });
+        return rootView;
     }
 
 }
