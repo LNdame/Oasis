@@ -36,6 +36,7 @@ import inqb8.ansteph.oasis.api.columns.SchoolColumns;
 import inqb8.ansteph.oasis.model.School;
 import inqb8.ansteph.oasis.ngo.CategoryList;
 import inqb8.ansteph.oasis.ngo.NGOList;
+import inqb8.ansteph.oasis.ngo.WorKAreaList;
 import inqb8.ansteph.oasis.school.SchoolList;
 import inqb8.ansteph.oasis.toolkit.ToolKitLineView;
 import inqb8.ansteph.oasis.utils.GeoTagUtils;
@@ -222,7 +223,7 @@ public class SchoolMap extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-            startActivity(new Intent(getApplicationContext(), NGOList.class));
+            startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
             startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){

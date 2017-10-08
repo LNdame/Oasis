@@ -206,7 +206,7 @@ public class NGOMap extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NGOMap.class));
 
         } else if (id == R.id.nav_ngo_list) {
-            startActivity(new Intent(getApplicationContext(), NGOList.class));
+            startActivity(new Intent(getApplicationContext(), WorKAreaList.class));
         } else if (id == R.id.nav_toolkit) {
             startActivity(new Intent(getApplicationContext(), ToolKitLineView.class));
         } else if (id == R.id.nav_feedback){

@@ -36,7 +36,7 @@ import inqb8.ansteph.oasis.website.WebsiteView;
 public class SchoolDetail extends AppCompatActivity {
 
     private MapView mapView = null;
-    TextView txtaddress, txtName, txtLearnerLevel,txtGeotag, txtTelephone, txtFax, txtEmail, txtWebsite;
+    TextView txtaddress, txtName, txtLearnerLevel,txtGeotag, txtTelephone, txtFax, txtEmail, txtWebsite, txtSchoolSysnopsis;
     ImageView imgLogo;
     public static String SCHOOL_PARAM = "school";
 
@@ -106,6 +106,7 @@ public class SchoolDetail extends AppCompatActivity {
         txtTelephone = (TextView) findViewById(R.id.txtSchoolCall) ;
         txtFax = (TextView) findViewById(R.id.txtFax) ;
         imgLogo = (ImageView) findViewById(R.id.imgLogoDet);
+        txtSchoolSysnopsis =(TextView) findViewById(R.id.txtschoolSynopsis);
        // txtaddress = (TextView) findViewById(R.id.txtsc) ;
        // txtFax = (TextView) findViewById(R.id.txtFax) ;
 
@@ -116,9 +117,10 @@ public class SchoolDetail extends AppCompatActivity {
         txtaddress.setText(school.getAddress());
         txtName.setText(school.getName());
         txtWebsite.setText(school.getWebsite_url());
-        txtTelephone.setText(school.getTelephone());
+        txtTelephone.setText("Tel: "+school.getTelephone());
+        txtSchoolSysnopsis.setText(school.getEmail());
 
-        txtFax.setText(school.getFax());
+        txtFax.setText("Fax: "+school.getFax());
 
 
     }

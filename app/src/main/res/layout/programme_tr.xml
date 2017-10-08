@@ -44,6 +44,7 @@
         <TextView
             android:textSize="10sp"
             android:padding="5dp"
+            android:minWidth="70dp"
             android:textStyle="bold"
             android:text="Education: "
             android:layout_width="wrap_content"
@@ -72,6 +73,7 @@
             android:padding="5dp"
             android:textStyle="bold"
             android:text="Duration: "
+            android:minWidth="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -97,6 +99,7 @@
                 android:textSize="10sp"
                 android:padding="5dp"
                 android:textStyle="bold"
+                android:minWidth="70dp"
                 android:text="Frequency: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -135,6 +138,7 @@
                 android:padding="5dp"
                 android:textStyle="bold"
                 android:text="Learner ?: "
+                android:minWidth="70dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
