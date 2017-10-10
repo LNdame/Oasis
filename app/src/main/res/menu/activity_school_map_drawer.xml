@@ -37,6 +37,7 @@
             android:icon="@drawable/icons_documents"
             android:title="Toolkit" />
         <item
+            android:visible="false"
             android:id="@+id/nav_feedback"
             android:icon="@drawable/icons_feedback"
             android:title="Feedback" />

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">OASIS</string>
-    <string name="com.mapbox.mapboxsdk.accessToken" translatable="false">pk.eyJ1IjoiYW5zdGVwaCIsImEiOiJjajVoejdtcmgxb3Q0MzNyeWlvdWhtYml5In0.hs9kEugjnqYXJMB41Fhxbw</string>
     <string name="title_activity_category_list">CategoryList</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -17,58 +16,29 @@
     <string name="title_activity_ngoprogramme">NGO Programme</string>
     <string name="title_activity_wor_karea_list">Categories</string>
     <string name="title_activity_previewer">Previewer</string>
-    <string name="pick_file">Pick file</string>
     <string name="toast_pick_file_error">Unable to pick file. Check status of file manager.</string>
-    <string name="title_activity_email_password">EmailPassword</string>
+    <string name="title_activity_email_password">Sign In/Up</string>
 
-
-    <string name="status_verification_failed">Verification failed</string>
-    <string name="status_verification_succeeded">Verification succeeded</string>
-    <string name="status_sign_in_failed">Sign-in failed</string>
-    <string name="instant_validation">(instant validation)</string>
 
     <string name="firebase_status_fmt">Firebase User: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
-
-    <string name="google_status_fmt">Google User: %s</string>
-    <string name="google_title_text">Google Sign In</string>
-
-    <string name="facebook_status_fmt">Facebook User: %s</string>
-    <string name="facebook_title_text">Facebook Login</string>
 
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="emailpassword_title_text">Email and Password</string>
+    <string name="emailpassword_title_text">Sign In or Sign Up</string>
 
     <string name="tellus_about">Please tell us about yourself</string>
 
-    <string name="phone_title_text">Phone Number</string>
-
-    <string name="twitter_status_fmt">Twitter User: %s</string>
-    <string name="twitter_title_text">Twitter Login</string>
-
-    <string name="firebaseui_status_fmt">Firebase User: %s</string>
-    <string name="firebaseui_title_text">FirebaseUI Auth</string>
-
-    <string name="id_fmt">User ID: %s</string>
-    <string name="email_fmt">Email: %s</string>
-
 
     <string name="loading">Loading…</string>
-    <string name="signed_in">Signed In</string>
     <string name="signed_out">Signed Out</string>
-    <string name="token_null">Token: null</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="desc_OASIS_lockup">OASIS logo and name</string>
     <string name="auth_failed">Authentication failed</string>
-    <string name="start_phone_auth">Start</string>
-    <string name="verify_phone_auth">Verify</string>
-    <string name="resend_phone_auth">Resend</string>
-    <string name="hint_phone_number">Phone Number</string>
-    <string name="hint_verification_code">Verification Code</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
     <string name="sign_out">Sign Out</string>
+    <string name="sign_takemein">Take me straight in</string>
+    <string name="nav_drawer_text">Organising After-School &amp; In-School</string>
     <string name="verify_email">Verify Email</string>
     <string name="title_activity_extra_info">ExtraInfo</string>
     <string name="title_activity_tool_kit_list">ToolKitList</string>
@@ -76,7 +46,6 @@
     <string name="title_activity_website_view">Website</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <string name="dummy_text">
@@ -110,9 +79,12 @@
 
     <string name="slide_4_title">Contacting OASIS</string>
     <string name="slide_4_desc">The OASIS App is currently housed under the Faculty of Education in the Centre for the Community School at Nelson Mandela University.\n
-If you wish to get in touch or involved in the project, you may contact,\n
-Mark Lamani: marklamani@gmail.com // 073 555 3667 \n
-Zikhona Tube: wendy.tube@nmmu.ac.za // 041 504 4021 </string>
+If you wish to get in touch or involved in the project, you may contact
+ </string>
+
+    <string name="slide_4_contact1">Mark Lamani: \n marklamani@gmail.com - 073 555 3667 \n</string>
+
+    <string name="slide_4_contact2">Zikhona Tube:\n wendy.tube@nmmu.ac.za - 041 504 4021</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>

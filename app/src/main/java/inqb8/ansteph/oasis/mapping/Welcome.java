@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
+
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,8 +37,9 @@ public class Welcome extends AppCompatActivity
     static String TAG = Welcome.class.getSimpleName();
 
     private FirebaseAuth mAuth;
-
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    FirebaseUser mUser;
 
     public static final  int RC_SIGN_IN =1;
 
@@ -70,14 +73,15 @@ public class Welcome extends AppCompatActivity
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+               // FirebaseUser user = firebaseAuth.getCurrentUser();
+                 mUser = firebaseAuth.getCurrentUser();
 
-                if(user!=null)
+                if(mUser!=null)
                 {
                     //User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in" + user.getUid());
+                   // Log.d(TAG, "onAuthStateChanged:signed_in" + user.getUid());
                 }else{
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                   // Log.d(TAG, "onAuthStateChanged:signed_out");
 
                     startActivity(new Intent(getApplicationContext(), EmailPassword.class));
                    /* startActivityForResult(
@@ -92,6 +96,8 @@ public class Welcome extends AppCompatActivity
 
             }
         };
+
+
     }
 
     @Override
@@ -126,6 +132,31 @@ public class Welcome extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+    private void setupDrawer()
+    {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        TextView txtUsername = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtuseremail);
+       // TextView txtUseremail = (TextView) navigationView.getHeaderView(0). findViewById(R.id.useremail);
+
+        txtUsername.setText(mUser.getEmail());
+
+        /*txtUseremail.setText(mGlobalRetainer.get_grAgent().getEmail());
+        //txtUsername.setText(mGlobalRetainer.get_grAgent().getFirstname() + " "+mGlobalRetainer.get_grAgent().getSurname());
+
+        ImageView img  = (ImageView) navigationView.getHeaderView(0). findViewById(R.id.imageView);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+            }
+        });*/
+    }
+
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -152,6 +183,7 @@ public class Welcome extends AppCompatActivity
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
         } else if (id == R.id.nav_logout){
             // startActivity(new Intent(getApplicationContext(), SchoolMap.class));
+            signOut();
         }
 
 
@@ -161,6 +193,10 @@ public class Welcome extends AppCompatActivity
         return true;
     }
 
+    private void signOut() {
+        mAuth.signOut();
+        //updateUI(null);
+    }
 
     @Override
     protected void onStart() {

@@ -2,13 +2,24 @@ package inqb8.ansteph.oasis.ngo;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.text.style.RelativeSizeSpan;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.bluejamesbond.text.DocumentView;
+import com.bluejamesbond.text.style.JustifiedSpan;
+import com.bluejamesbond.text.style.TextAlignment;
+import com.bluejamesbond.text.util.ArticleBuilder;
 
 import inqb8.ansteph.oasis.R;
 import inqb8.ansteph.oasis.app.Constants;
@@ -81,6 +92,12 @@ public class InfoFragment extends Fragment {
 
         setValue(mOrganisation);
 
+        ArticleBuilder article = new ArticleBuilder().append(mOrganisation.getGeneralInfo().getSynopsis(), false,new RelativeSizeSpan(1f),
+                new JustifiedSpan());
+
+
+        AddDocumentView(article, DocumentView.PLAIN_TEXT, false, rootView);
+
         txtWebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +114,45 @@ public class InfoFragment extends Fragment {
 
         return rootView;
     }
+
+
+
+    public void AddDocumentView (CharSequence article, int type, boolean rtl, View rootView ){
+
+        final DocumentView documentView = new DocumentView(getActivity(), type);
+        documentView.getDocumentLayoutParams().setTextColor(0xff000000);
+        documentView.getDocumentLayoutParams().setTextTypeface(Typeface.DEFAULT);
+        documentView.getDocumentLayoutParams().setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        documentView.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
+        documentView.getDocumentLayoutParams().setInsetPaddingLeft(30f);
+        documentView.getDocumentLayoutParams().setInsetPaddingRight(30f);
+        documentView.getDocumentLayoutParams().setInsetPaddingTop(30f);
+        documentView.getDocumentLayoutParams().setInsetPaddingBottom(30f);
+        documentView.getDocumentLayoutParams().setLineHeightMultiplier(1f);
+        documentView.getDocumentLayoutParams().setReverse(rtl);
+       // documentView.getDocumentLayoutParams().setDebugging(debugging);
+        documentView.setText(article);
+       // documentView.setProgressBar((ProgressBar) findViewById(R.id.progressBar));
+        documentView.setFadeInDuration(800);
+        documentView.setFadeInAnimationStepDelay(30);
+        documentView.setFadeInTween(new DocumentView.ITween() {
+            @Override
+            public float get(float t, float b, float c, float d) {
+                return c * (t /= d) * t * t + b;
+            }
+        });
+
+        LinearLayout linearLayout = new LinearLayout(getActivity());
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setLayoutParams(
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT));
+        linearLayout.addView(documentView);
+
+        LinearLayout articleList = (LinearLayout) rootView.findViewById(R.id.articleList);
+        articleList.addView(linearLayout);
+    }
+
 
 
     public void gotoMap(View view)
@@ -133,8 +189,17 @@ public class InfoFragment extends Fragment {
     {
         txtAbout.setText(org.getGeneralInfo().getSynopsis());
         txtAddress.setText(org.getAddressline1());
-        txtContact1 .setText( org.getContactperson1Name() +" - " + org.getContactperson1Position());
-        txtContact2.setText( org.getContactperson2Name() +" - " + org.getContactperson2Position());
+
+       // org.getContactperson1Name() ==null? "":org.getContactperson1Name()
+        //org.getContactperson1Position()==null?"":org.getContactperson1Position
+        String c1 =org.getContactperson1Name() ==null|| TextUtils.isEmpty(org.getContactperson1Name())? "":org.getContactperson1Name();
+        String p1 =org.getContactperson1Position()==null|| TextUtils.isEmpty(org.getContactperson1Position())?"":org.getContactperson1Position();
+       // String contact1 = +" - " + org.getContactperson1Position()==null?"":org.getContactperson1Position();
+        String c2 =org.getContactperson2Name() ==null|| TextUtils.isEmpty(org.getContactperson2Name())? "":org.getContactperson2Name();
+        String p2 =org.getContactperson2Position()==null|| TextUtils.isEmpty(org.getContactperson2Position())?"":org.getContactperson2Position();
+
+        txtContact1 .setText(c1+" - "+p1);
+        txtContact2.setText( c2+" - "+p2);
         txtWebsite.setText(org.getGeneralInfo().getWebsiteurl());
         txtEmail.setText(org.getGeneralInfo().getEmail());
         txtTel.setText(org.getGeneralInfo().getTelephoneNumber());

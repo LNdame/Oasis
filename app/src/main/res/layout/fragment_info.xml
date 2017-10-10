@@ -21,8 +21,16 @@
         android:textColor="@color/colorAccent"
         android:text="About" />
 
+<LinearLayout
+    android:id="@+id/articleList"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</LinearLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/txtabout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

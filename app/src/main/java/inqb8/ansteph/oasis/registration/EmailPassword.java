@@ -1,5 +1,6 @@
 package inqb8.ansteph.oasis.registration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import inqb8.ansteph.oasis.R;
+import inqb8.ansteph.oasis.mapping.Welcome;
 
 public class EmailPassword extends  BaseActivity implements View.OnClickListener {
 
@@ -28,6 +31,7 @@ public class EmailPassword extends  BaseActivity implements View.OnClickListener
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
+    private Button mBtnTakemein;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -61,7 +65,8 @@ public class EmailPassword extends  BaseActivity implements View.OnClickListener
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.verify_email_button).setOnClickListener(this);
-
+        mBtnTakemein = (Button) findViewById(R.id.btntakemein);
+        mBtnTakemein.setOnClickListener(this);
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
@@ -219,6 +224,7 @@ public class EmailPassword extends  BaseActivity implements View.OnClickListener
             findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
             findViewById(R.id.email_password_fields).setVisibility(View.GONE);
             findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
+            mBtnTakemein.setVisibility(View.VISIBLE);
 
             findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
         } else {
@@ -228,6 +234,7 @@ public class EmailPassword extends  BaseActivity implements View.OnClickListener
             findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
             findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
+            mBtnTakemein.setVisibility(View.GONE);
         }
     }
 
@@ -242,6 +249,9 @@ public class EmailPassword extends  BaseActivity implements View.OnClickListener
             signOut();
         } else if (i == R.id.verify_email_button) {
             sendEmailVerification();
+        }else if(i==R.id.btntakemein)
+        {
+            startActivity(  new Intent(getApplicationContext(),Welcome.class));
         }
     }
 }
