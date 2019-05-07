@@ -12,6 +12,12 @@ import java.util.Locale;
  */
 public class DateTimeUtils {
 
+    //Date Constants
+
+
+
+
+
     public static String parseDateTime(String dateString, String originalFormat, String outputFromat){
 
         SimpleDateFormat formatter = new SimpleDateFormat(originalFormat, Locale.US);

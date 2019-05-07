@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,10 @@ public class SchoolListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_school_list, container, false);
+
+        if(mOrganisation_schools.size()>0)
+            ((TextView)rootView.findViewById(R.id.txtNoSchool)).setVisibility(View.GONE);
+
 
         mListView = (ListView) rootView.findViewById(R.id.listview);
         String[] Schools = new String[mOrganisation_schools.size()];

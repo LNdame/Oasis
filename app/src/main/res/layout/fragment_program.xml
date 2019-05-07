@@ -29,6 +29,7 @@
 
     </LinearLayout>
     <TextView
+        android:id="@+id/txtNoProg"
         android:textSize="20dp"
         android:gravity="center"
         android:textStyle="bold"

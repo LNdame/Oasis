@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,8 @@ public class ProgramFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter mProgrammeAdapter;
+
+    TextView  txtNoProg;
 
     public ProgramFragment() {
         // Required empty public constructor
@@ -69,6 +72,9 @@ public class ProgramFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_program, container, false);
+
+        if(mProgrammes.size()>0)
+            ((TextView)rootView.findViewById(R.id.txtNoProg)).setVisibility(View.GONE);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));

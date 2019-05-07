@@ -94,7 +94,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.NGOItemVie
     public void onBindViewHolder(NGOItemViewHolder holder,final int position) {
         holder.title.setText(organisationList.get(position).getName());
 
-        holder.txtCategory.setText("[" + organisationList.get(position).getWorkArea().getName()+"]" );
+        holder.txtCategory.setText( organisationList.get(position).getWorkArea().getName() );
         final View itemView = holder.itemView;
 
         byte[]logo  = organisationList.get(position).getGeneralInfo().getLogo();

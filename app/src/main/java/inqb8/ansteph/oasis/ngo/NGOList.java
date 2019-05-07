@@ -147,6 +147,7 @@ public class NGOList extends AppCompatActivity
         ArrayList<Organisation>  organisations = new ArrayList<>();
 
         ContentResolver resolver = getContentResolver();
+        //this is it // the thing that need to change
         Cursor cursor = resolver.query(ContentTypes.ORGANISATION_CONTENT_URI, OrganisationColumns.PROJECTION,
                 OrganisationColumns.WORK_AREA_ID + "=?",new String[]{String.valueOf(cat.getId())},null);
 
@@ -251,7 +252,7 @@ public class NGOList extends AppCompatActivity
 
 
 
-    protected void  initViewPager(Category category, ArrayList<Organisation> organisations){
+    protected void  initViewPager(Category category, ArrayList<Organisation> organisations) {
 
         mRecyclerView =(RecyclerViewPager) findViewById(R.id.recyclerviewNgo);
 

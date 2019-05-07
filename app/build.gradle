@@ -19,13 +19,13 @@ repositories {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "inqb8.ansteph.oasis"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 7
+        versionName "1.13"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,14 +34,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "stage"
     productFlavors {
         free {
+            dimension "stage"
             minSdkVersion 19
             applicationId 'inqb8.ansteph.oasis'
             targetSdkVersion 25
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            versionCode 1
-            versionName '1.0'
+            versionCode 7
+            versionName '1.13'
         }
     }
 }
@@ -63,7 +65,7 @@ dependencies {
     compile project(':android-pdf-viewer')
     compile project(':timelineview')
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+
     compile 'com.google.firebase:firebase-auth:10.2.0'
     compile 'com.firebaseui:firebase-ui-auth:1.2.0'
     compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.2@aar'

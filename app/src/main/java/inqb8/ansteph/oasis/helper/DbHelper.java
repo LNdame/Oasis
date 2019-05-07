@@ -24,7 +24,7 @@ import inqb8.ansteph.oasis.model.Organisation;
 
 public class DbHelper extends SQLiteOpenHelper implements BaseColumns {
 
-    public static  String DATABASE_NAME = "oasis.db";
+    public static  String DATABASE_NAME = "oasis_v3.db";
 
     public static  String DB_PATH= "/data/data/inqb8.ansteph.oasis/databases/";
 
