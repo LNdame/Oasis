@@ -22,5 +22,6 @@ public interface Tables {
     String ORGANISATION  = "organisation";
 
     String ORGANISATION_SCHOOL  = "organisation_school";
+    String ORGANISATION_WORK_AREA  = "organisation_work_area";
 
 }
