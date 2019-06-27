@@ -1,7 +1,9 @@
 package inqb8.ansteph.oasis.ngo;
 
+import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,6 +35,7 @@ import inqb8.ansteph.oasis.adapter.LayoutAdapter;
 import inqb8.ansteph.oasis.api.ContentTypes;
 import inqb8.ansteph.oasis.api.columns.GeneralInfoColumns;
 import inqb8.ansteph.oasis.api.columns.OrganisationColumns;
+import inqb8.ansteph.oasis.api.columns.Organisation_Work_Area_Columns;
 import inqb8.ansteph.oasis.api.columns.WorkAreaColumns;
 import inqb8.ansteph.oasis.app.GlobalRetainer;
 import inqb8.ansteph.oasis.helper.DbHelper;
@@ -67,8 +70,6 @@ public class NGOList extends AppCompatActivity
 
         mGlobalRetainer = (GlobalRetainer) getApplicationContext();
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +78,6 @@ public class NGOList extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
 
         mAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -116,8 +116,8 @@ public class NGOList extends AppCompatActivity
 
         if(mCurrentCategory!=null)
         {
-            ArrayList<Organisation> orgList=retrieveList(mCurrentCategory);// databhelper.retrieveAllOrganisations();//
-
+           // ArrayList<Organisation> orgList=retrieveList(mCurrentCategory);// databhelper.retrieveAllOrganisations();//
+            ArrayList<Organisation> orgList = setupCurrentCategoryList(retrieveList(mCurrentCategory),retrieveCatList(mCurrentCategory) );
             initViewPager(mCurrentCategory, orgList);
 
             setTitle(mCurrentCategory.getName());
@@ -125,7 +125,10 @@ public class NGOList extends AppCompatActivity
         }else{
            mCurrentCategory = retrieveCategory(mGlobalRetainer.getCategoryID());
 
-            ArrayList<Organisation> orgList=retrieveList(mCurrentCategory);// databhelper.retrieveAllOrganisations();//
+           // ArrayList<Organisation> orgList=retrieveList(mCurrentCategory);// databhelper.retrieveAllOrganisations();//
+
+            ArrayList<Organisation> orgList = setupCurrentCategoryList(retrieveList(mCurrentCategory),retrieveCatList(mCurrentCategory) );
+
 
             initViewPager(mCurrentCategory, orgList);
 
@@ -138,9 +141,32 @@ public class NGOList extends AppCompatActivity
 
     }
 
+//
+    private ArrayList<Integer> retrieveCatList(Category cat){
 
+        ArrayList<Integer> workIDs = new ArrayList<>();
+        ContentResolver resolver = getContentResolver();
 
+        Cursor cursor = resolver.query(ContentTypes.ORGANISATION_WORK_AREA_CONTENT_URI, Organisation_Work_Area_Columns.PROJECTION,
+                Organisation_Work_Area_Columns.WORK_AREA_ID + "=?",new String[]{String.valueOf(cat.getId())},null);
 
+        if(cursor.moveToFirst()){
+            do{
+                int id = 0;
+               id =  (cursor.getString(cursor.getColumnIndex(Organisation_Work_Area_Columns.ORGANISATION_ID)))!=null ?
+                       Integer.parseInt(cursor.getString(cursor.getColumnIndex(Organisation_Work_Area_Columns.ORGANISATION_ID))):0;
+
+               workIDs.add(id);
+            }while (cursor.moveToNext());
+        }
+
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+
+        return workIDs;
+
+    }
 
     private ArrayList<Organisation> retrieveList(Category cat)
     {
@@ -148,8 +174,12 @@ public class NGOList extends AppCompatActivity
 
         ContentResolver resolver = getContentResolver();
         //this is it // the thing that need to change
+//        Cursor cursor = resolver.query(ContentTypes.ORGANISATION_CONTENT_URI, OrganisationColumns.PROJECTION,
+//                OrganisationColumns.WORK_AREA_ID + "=?",new String[]{String.valueOf(cat.getId())},null);
+
         Cursor cursor = resolver.query(ContentTypes.ORGANISATION_CONTENT_URI, OrganisationColumns.PROJECTION,
-                OrganisationColumns.WORK_AREA_ID + "=?",new String[]{String.valueOf(cat.getId())},null);
+                null,null, null);
+
 
         if(cursor.moveToFirst()){
             do{
@@ -188,6 +218,18 @@ public class NGOList extends AppCompatActivity
     }
 
 
+    private ArrayList<Organisation> setupCurrentCategoryList(ArrayList<Organisation> orgs, ArrayList<Integer>ids){
+        ArrayList<Organisation> organisations = new ArrayList<>();
+        for(Organisation org : orgs){
+            for(int id : ids){
+                if (org.get_id() == id){
+                    organisations.add(org);
+                }
+            }
+        }
+
+        return organisations;
+    }
 
     private GeneralInfo retrieveGenInfo(int id){
 
@@ -447,3 +489,5 @@ public class NGOList extends AppCompatActivity
     }
 
 }
+
+

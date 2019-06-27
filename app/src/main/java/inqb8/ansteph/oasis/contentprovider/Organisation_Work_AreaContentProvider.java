@@ -17,7 +17,7 @@ import inqb8.ansteph.oasis.helper.DbHelper;
 public class Organisation_Work_AreaContentProvider extends ContentProvider {
 
 
-    public static final Uri CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.organisation_work_areacontentprovider/oasis");
+    public static final Uri CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.organisationworkareacontentprovider/oasis");
     private SQLiteDatabase db;
 
     public DbHelper databhelper ;
