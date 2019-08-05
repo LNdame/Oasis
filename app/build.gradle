@@ -18,14 +18,14 @@ repositories {
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.1'
     defaultConfig {
         applicationId "inqb8.ansteph.oasis"
         minSdkVersion 19
-        targetSdkVersion 25
-        versionCode 7
-        versionName "1.13"
+        targetSdkVersion 29
+        versionCode 9
+        versionName "1.15"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -40,10 +40,10 @@ android {
             dimension "stage"
             minSdkVersion 19
             applicationId 'inqb8.ansteph.oasis'
-            targetSdkVersion 25
+            targetSdkVersion 29
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            versionCode 7
-            versionName '1.13'
+            versionCode 9
+            versionName '1.15'
         }
     }
 }
@@ -64,13 +64,13 @@ dependencies {
     }
     compile project(':android-pdf-viewer')
     compile project(':timelineview')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
 
     compile 'com.google.firebase:firebase-auth:10.2.0'
     compile 'com.firebaseui:firebase-ui-auth:1.2.0'
     compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.2@aar'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-v4:26.1.0'
     compile 'pl.openrnd.android:multi-level-listview:1.0.1'
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
     testCompile 'junit:junit:4.12'
