@@ -26,4 +26,6 @@ public class ContentTypes {
 
     public static final Uri ORGANISATION_SCHOOL_CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.organisationschoolcontentprovider/oasis");
 
+    public static final Uri ORGANISATION_WORK_AREA_CONTENT_URI = Uri.parse("content://inqb8.ansteph.oasis.contentprovider.organisationworkareacontentprovider/oasis");
+
 }
