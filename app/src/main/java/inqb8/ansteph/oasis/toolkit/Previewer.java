@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.database.Cursor;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,7 +23,7 @@ import com.inqb8.ansteph.android_pdf_viewer.PDFView;
 import com.inqb8.ansteph.android_pdf_viewer.listener.OnLoadCompleteListener;
 import com.inqb8.ansteph.android_pdf_viewer.listener.OnPageChangeListener;
 import com.inqb8.ansteph.android_pdf_viewer.scroll.DefaultScrollHandle;
-import com.shockwave.pdfium.PdfDocument;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -162,31 +163,31 @@ public class Previewer extends AppCompatActivity implements OnPageChangeListener
         }
     }
 
-    public void printBookmarksTree(List<PdfDocument.Bookmark> tree, String sep) {
-        for (PdfDocument.Bookmark b : tree) {
-
-            // Log.e(TAG, String.format("%s %s, p %d", sep, b.getTitle(), b.getPageIdx()));
-
-            if (b.hasChildren()) {
-                printBookmarksTree(b.getChildren(), sep + "-");
-            }
-        }
-    }
+//    public void printBookmarksTree(List<PdfDocument.Bookmark> tree, String sep) {
+//        for (PdfDocument.Bookmark b : tree) {
+//
+//            // Log.e(TAG, String.format("%s %s, p %d", sep, b.getTitle(), b.getPageIdx()));
+//
+//            if (b.hasChildren()) {
+//                printBookmarksTree(b.getChildren(), sep + "-");
+//            }
+//        }
+//    }
 
 
     @Override
     public void loadComplete(int nbPages) {
-        PdfDocument.Meta meta = pdfView.getDocumentMeta();
-        Log.e(TAG, "title = " + meta.getTitle());
-        Log.e(TAG, "author = " + meta.getAuthor());
-        Log.e(TAG, "subject = " + meta.getSubject());
-        Log.e(TAG, "keywords = " + meta.getKeywords());
-        Log.e(TAG, "creator = " + meta.getCreator());
-        Log.e(TAG, "producer = " + meta.getProducer());
-        Log.e(TAG, "creationDate = " + meta.getCreationDate());
-        Log.e(TAG, "modDate = " + meta.getModDate());
-
-        printBookmarksTree(pdfView.getTableOfContents(), "-");
+//        PdfDocument.Meta meta = pdfView.getDocumentMeta();
+//        Log.e(TAG, "title = " + meta.getTitle());
+//        Log.e(TAG, "author = " + meta.getAuthor());
+//        Log.e(TAG, "subject = " + meta.getSubject());
+//        Log.e(TAG, "keywords = " + meta.getKeywords());
+//        Log.e(TAG, "creator = " + meta.getCreator());
+//        Log.e(TAG, "producer = " + meta.getProducer());
+//        Log.e(TAG, "creationDate = " + meta.getCreationDate());
+//        Log.e(TAG, "modDate = " + meta.getModDate());
+//
+//        printBookmarksTree(pdfView.getTableOfContents(), "-");
     }
 
     @Override

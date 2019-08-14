@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <permission android:name="permission" android:protectionLevel="signature"/>
+
 
     <application
         android:name=".app.GlobalRetainer"
@@ -119,7 +121,7 @@
             android:name=".contentprovider.SchoolContentProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.schoolcontentprovider"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
         <provider
             android:name=".contentprovider.GeneralInfoContentProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.generalinfocontentprovider"
@@ -243,11 +245,11 @@
             android:name=".contentprovider.Organisation_Work_AreaContentProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.organisationworkareacontentprovider"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
         <provider
             android:name=".contentprovider.JoinerProvider"
             android:authorities="inqb8.ansteph.oasis.contentprovider.joinerprovider"
-            android:enabled="false"
+            android:enabled="true"
             android:exported="false"></provider>
     </application>
 

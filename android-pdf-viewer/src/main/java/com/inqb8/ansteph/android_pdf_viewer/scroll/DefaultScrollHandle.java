@@ -3,6 +3,7 @@ package com.inqb8.ansteph.android_pdf_viewer.scroll;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
@@ -79,7 +80,7 @@ public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle 
             }
         }
 
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             setBackgroundDrawable(background);
         } else {
             setBackground(background);

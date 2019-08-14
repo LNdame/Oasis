@@ -1,1 +1,1 @@
-include ':app', ':android-pdf-viewer', ':timelineview'
+include ':app', ':android-pdf-viewer', ':timelineview', ':PdfiumAndroid'

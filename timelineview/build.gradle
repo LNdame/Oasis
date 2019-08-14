@@ -6,12 +6,12 @@ apply plugin: 'com.jfrog.bintray'
 version = "1.0.5"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.1'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 29
         versionCode 5
         versionName "1.0.5"
     }
@@ -24,8 +24,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
 }
 
 def siteUrl = 'https://github.com/vipulasri/Timeline-View'      // Homepage URL of the library
@@ -90,7 +90,7 @@ artifacts {
     archives sourcesJar
 }
 
-task findConventions << {
+task findConventions doLast {
     println project.getConvention()
 }
 
